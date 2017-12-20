@@ -22,7 +22,7 @@
             categories: {
                 type: Array,
                 default: [],
-            }
+            },
         },
         data() {
             return {}
