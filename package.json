@@ -19,10 +19,12 @@
   },
   "homepage": "https://github.com/GreenMelon/vue2-cookbook#readme",
   "dependencies": {
+    "handsontable": "^0.35.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.4",
     "rasterizehtml": "^1.2.4",
     "vue": "^2.1.5",
+    "vue-handsontable-official": "^1.0.0",
     "vue-router": "^2.1.1"
   },
   "devDependencies": {
