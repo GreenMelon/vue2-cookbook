@@ -13,7 +13,7 @@
                         name: 'handsontable',
                         instances: [
                             {
-                                name: '01',
+                                name: '示例',
                                 route: '/plugins/handsontable/01',
                             }
                         ],
@@ -21,8 +21,11 @@
                         name: 'vue-handsontable',
                         instances: [
                             {
-                                name: '01',
+                                name: '示例',
                                 route: '/plugins/vue-handsontable/01',
+                            },{
+                                name: '产品信息',
+                                route: '/plugins/vue-handsontable/02',
                             }
                         ],
                     }
