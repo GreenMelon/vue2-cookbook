@@ -1,0 +1,80 @@
+body {
+    .handsontable {
+        &.ht__selection--columns {
+            thead {
+                th {
+                    &.ht__highlight {
+                        color: #3f4550;
+                        background-color: #a7cbef;
+                    }
+                }
+            }
+        }
+        &.ht__selection--rows {
+            tbody {
+                th {
+                    &.ht__highlight {
+                        color: #3f4550;
+                        background-color: #a7cbef;
+                    }
+                }
+            }
+        }
+        tbody {
+            th {
+                &.ht__highlight {
+                    color: #3f4550;
+                    background-color: #cdd4dd;
+                }
+            }
+        }
+        th {
+            color: #3f4550;
+            background-color: #e5e9ee;
+        }
+        td {
+            &.area {
+                color: #141414;
+                background: rgba(218, 236, 254, .4);
+            }
+        }
+    }
+    .htContextMenu {
+        table {
+            &.htCore {
+                border: none;
+            }
+            tbody {
+                tr {
+                    font-size: 12px;
+                    letter-spacing: .5px;
+                    &:first-child {
+                        td {
+                            border-radius: 4px 4px 0 0;
+                        }
+                    }
+                    &:last-child {
+                        td {
+                            border-radius: 0 0 4px 4px;
+                        }
+                    }
+                    td {
+                        color: #bcc1cc;
+                        background: #2c374d;
+                        &.current,
+                        &.zeroclipboard-is-hover {
+                            color: #fff;
+                            background: #374561;
+                        }
+                        &.htDisabled {
+                            &, &:hover {
+                                color: #646c7c;
+                                background: #2c374d;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

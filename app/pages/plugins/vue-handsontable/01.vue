@@ -48,7 +48,12 @@
                                 dateFormat: 'YYYY-MM-DD',
                             },{
                                 data: 'active',
-                                renderer: RadioRenderer,
+                                // renderer: RadioRenderer,
+                                type: 'checkbox',
+                                label: {
+                                    position: 'after',
+                                    property: 'name'
+                                },
                             },{
                                 data: 'checked',
                                 type: 'checkbox',
