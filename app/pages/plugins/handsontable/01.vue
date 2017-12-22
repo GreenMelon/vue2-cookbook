@@ -10,6 +10,7 @@
 <script>
     import Handsontable from 'handsontable';
     import data from '@/data/handsontable-01';
+    import ContextMenu from '../config/context-menu';
 
     export default {
         data() {
@@ -19,15 +20,21 @@
         methods: {
             init() {
                 const container = document.getElementById('example');
-                const table = new Handsontable(container, {
+                let table = new Handsontable(container, {
                     data: data,
                     rowHeaders: true,
                     colHeaders: true,
+                    contextMenu: true,
+                    dropdownMenu: true,
+                });
+
+                table.updateSettings({
+                    contextMenu: ContextMenu
                 });
             },
         },
         mounted() {
-            this.init();
+            this.$nextTick(this.init);
         },
     };
 </script>
