@@ -4,22 +4,20 @@
 <template>
     <main>
         <div>
-            <v-hot-table
-                :root="config.root"
+            <v-table
                 :settings="config.settings"
-            ></v-hot-table>
+            ></v-table>
         </div>
     </main>
 </template>
 
 <script>
-    // import Handsontable from 'handsontable';
-    import VueHotTable from 'vue-handsontable-official';
+    import VTable from './v-table';
+    import ContextMenu from '../config/context-menu';
     import data from '@/data/handsontable-01';
-    // const Handsontable = require('handsontable');
 
     const RadioRenderer = (instance, td, row, col, prop, value, cellProperties) => {
-        // Handsontable.renderers.TextRenderer.apply(this, arguments);
+        //
     };
 
     const _data = data.map((item, index) => {
@@ -30,12 +28,11 @@
 
     export default {
         components: {
-            'v-hot-table': VueHotTable,
+            'v-table': VTable,
         },
         data() {
             return {
                 config: {
-                    root: 'example',
                     settings: {
                         data: _data,
                         columns: [
@@ -62,18 +59,22 @@
                         ],
                         colHeaders: true,
                         rowHeaders: true,
+                        contextMenu: ContextMenu,
+                        dropdownMenu: true,
+                        afterPaste(data) {
+                            console.log('afterPaste', data);
+                            // this.rootElement.__vue__.$emit('myAfterPaste');
+                        },
                     },
                 },
             }
         },
         computed: {},
         methods: {
-            init() {
-                //
-            },
+            init() {},
         },
         mounted() {
-            //
+            this.$nextTick(this.init);
         },
     };
 </script>
