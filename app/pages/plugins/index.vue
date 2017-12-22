@@ -26,6 +26,9 @@
                             },{
                                 name: '产品信息',
                                 route: '/plugins/vue-handsontable/02',
+                            },{
+                                name: '产品指数',
+                                route: '/plugins/vue-handsontable/03',
                             }
                         ],
                     }
