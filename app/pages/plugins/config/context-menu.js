@@ -6,6 +6,7 @@ const ContextMenu = {
         'redo': {
             name: '重做',
         },
+        'hsep1': '---------',
         'row_above': {
             name: '在上面添加行',
         },
@@ -24,6 +25,7 @@ const ContextMenu = {
         'remove_col': {
             name: '删除列',
         },
+        'hsep2': '---------',
         'cut': {
             name: '剪切',
         },

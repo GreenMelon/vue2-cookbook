@@ -3,36 +3,36 @@ const productIndex = {
     values: [
         [
             {
-                selected: false,
+                checked: true,
                 text: '指数1',
             },{
-                selected: false,
+                checked: false,
                 text: '指数2',
             },{
-                selected: false,
+                checked: false,
                 text: '指数3',
             }
         ],[
             {
-                selected: false,
-                text: '指数1',
+                checked: false,
+                text: '指数4',
             },{
-                selected: false,
-                text: '指数2',
+                checked: false,
+                text: '指数5',
             },{
-                selected: false,
-                text: '指数3',
+                checked: false,
+                text: '指数6',
             }
         ],[
             {
-                selected: false,
-                text: '指数1',
+                checked: false,
+                text: '指数7',
             },{
-                selected: false,
-                text: '指数2',
+                checked: false,
+                text: '指数8',
             },{
-                selected: false,
-                text: '指数3',
+                checked: false,
+                text: '指数9',
             }
         ],
     ],

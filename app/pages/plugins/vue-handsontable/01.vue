@@ -66,8 +66,8 @@
                         rowHeaders: true,
                         contextMenu: ContextMenu,
                         dropdownMenu: true,
-                        afterPaste(data) {
-                            console.log('afterPaste', data);
+                        afterChange(data) {
+                            console.log('afterChange', data);
                             // this.rootElement.__vue__.$emit('myAfterPaste');
                         },
                     },
