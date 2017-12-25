@@ -23,6 +23,9 @@
                     },{
                         name: 'plugins',
                         route: '/plugins',
+                    },{
+                        name: 'instances',
+                        route: '/instances',
                     }
                 ]
             }
