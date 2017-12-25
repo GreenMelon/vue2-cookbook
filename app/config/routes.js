@@ -14,6 +14,11 @@ import VueHandsontable01 from '../pages/plugins/vue-handsontable/01';
 import VueHandsontable02 from '../pages/plugins/vue-handsontable/02';
 import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
 
+import Instances from '../pages/instances/index';
+import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
+import Rasterizehtml02 from '../pages/instances/rasterizehtml/02';
+import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
+
 export default [
     {
         path: '/',
@@ -46,6 +51,20 @@ export default [
     },{
         path: '/plugins/vue-handsontable/03',
         component: VueHandsontable03
+    },
+
+    {
+        path: '/instances',
+        component: Instances
+    },{
+        path: '/instances/rasterizehtml/01',
+        component: Rasterizehtml01
+    },{
+        path: '/instances/rasterizehtml/02',
+        component: Rasterizehtml02
+    },{
+        path: '/instances/rasterizehtml/03',
+        component: Rasterizehtml03
     },
 
     {

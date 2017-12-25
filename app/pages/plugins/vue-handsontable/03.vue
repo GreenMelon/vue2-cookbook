@@ -31,11 +31,14 @@
             td.innerHTML = `<input type="radio" name="radio-${value.group}"> ${value.text}`;
 
             $(td.children[0]).on('click', function() {
+                console.log('instance', prop, instance);
                 value.checked = this.checked;
             });
 
             if (value.checked) {
-                $(td.children[0]).prop('checked', true);
+                setTimeout(function() {
+                    $(td.children[0]).prop('checked', true);
+                }, 20);
             }
         }
 
