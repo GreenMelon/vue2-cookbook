@@ -96,10 +96,10 @@
                             cellProperties.editor = radioEditor;
                             return cellProperties;
                         },
-                        afterBeginEditing(row, col) {
-                            // const td = this.getCell(row, col);
-                            // td.innerHTML = td.textContent;
-                        },
+                        // afterBeginEditing(row, col) {
+                        //     // const td = this.getCell(row, col);
+                        //     // td.innerHTML = td.textContent;
+                        // },
                     },
                 },
             }
