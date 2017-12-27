@@ -15,6 +15,9 @@
                             {
                                 name: '示例',
                                 route: '/plugins/handsontable/01',
+                            },{
+                                name: '自定义renderer',
+                                route: '/plugins/handsontable/02',
                             }
                         ],
                     },{

@@ -10,6 +10,7 @@ import Components01 from '../pages/components/01/parent';
 
 import Plugins from '../pages/plugins/index';
 import Handsontable01 from '../pages/plugins/handsontable/01';
+import Handsontable02 from '../pages/plugins/handsontable/02';
 import VueHandsontable01 from '../pages/plugins/vue-handsontable/01';
 import VueHandsontable02 from '../pages/plugins/vue-handsontable/02';
 import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
@@ -42,6 +43,9 @@ export default [
     },{
         path: '/plugins/handsontable/01',
         component: Handsontable01
+    },{
+        path: '/plugins/handsontable/02',
+        component: Handsontable02
     },{
         path: '/plugins/vue-handsontable/01',
         component: VueHandsontable01
