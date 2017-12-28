@@ -1,6 +1,7 @@
 export default [
     [
         {
+            group: 0,
             type: 'head',
             text: '薄厚指数',
         },{
@@ -16,6 +17,7 @@ export default [
         }
     ],[
         {
+            group: 1,
             type: 'head',
             text: '修身指数',
         },{
