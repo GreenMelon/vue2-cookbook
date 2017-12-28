@@ -49,10 +49,11 @@
         Handsontable.editors.TextEditor.prototype.beginEditing.apply(this, arguments);
         console.log('beginEditing', this);
 
-        this.TEXTAREA = document.createElement('input');
+        this.TEXTAREA = document.createElement('textarea');
         this.TEXTAREA.value = this.originalValue.text;
         Handsontable.dom.empty(this.TEXTAREA_PARENT);
         this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+        this.TEXTAREA.focus();
     };
     radioEditor.prototype.close = function() {
         Handsontable.editors.TextEditor.prototype.close.apply(this, arguments);
@@ -82,6 +83,7 @@
                     rowHeaders: true,
                     colHeaders: true,
                     contextMenu: true,
+                    // contextMenu: ['col_left'],
                     dropdownMenu: true,
                     cells(row, col, prop) {
                         const cellProperties = {};
@@ -116,12 +118,47 @@
                             }
                         }
 
-                        console.log('afterCreateRow', self.table.render());
+                        console.log('afterCreateRow', self.table.getData());
+                    },
+                    beforeCreateCol: function(index, amount, source) {
+                        console.log('beforeCreateCol', index, amount, source);
+                    },
+                    afterCreateCol: function(index) {
+                        let data = self.table.getData();
+                        data.forEach((group, groupIndex) => {
+                            let groupId;
+                            if (group[0]) {
+                                groupId = group[0].group;
+                            } else {
+                                groupId = ('' + Math.random()).substr(2);
+                            }
+
+                            if (index === 0) {
+                                self.table.setDataAtCell(groupIndex, index, {
+                                    group: groupId,
+                                    type: 'head',
+                                    text: '',
+                                });
+                            } else {
+                                self.table.setDataAtCell(groupIndex, index, {
+                                    group: groupId,
+                                    type: 'radio',
+                                    text: '',
+                                    selected: false,
+                                });
+                            }
+                        });
+
+                        console.log('afterCreateCol', index, self.table.getData());
                     },
                 });
 
+                const contextMenu = Object.assign({}, ContextMenu);
+                contextMenu.items.col_left.disabled = false;
+                contextMenu.items.col_right.disabled = false;
                 this.table.updateSettings({
-                    contextMenu: ContextMenu
+                    // contextMenu: ContextMenu
+                    contextMenu,
                 });
             },
             getData() {

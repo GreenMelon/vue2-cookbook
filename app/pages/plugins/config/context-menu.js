@@ -1,38 +1,38 @@
 const ContextMenu = {
     items: {
-        'undo': {
+        undo: {
             name: '撤销',
         },
-        'redo': {
+        redo: {
             name: '重做',
         },
-        'hsep1': '---------',
-        'row_above': {
+        hsep1: '---------',
+        row_above: {
             name: '在上面添加行',
         },
-        'row_below': {
+        row_below: {
             name: '在下面添加行',
         },
-        'col_left': {
+        col_left: {
             name: '在前面添加列',
         },
-        'col_right': {
+        col_right: {
             name: '在后面添加列',
         },
-        'remove_row': {
+        remove_row: {
             name: '删除行',
         },
-        'remove_col': {
+        remove_col: {
             name: '删除列',
         },
-        'hsep2': '---------',
-        'cut': {
+        hsep2: '---------',
+        cut: {
             name: '剪切',
         },
-        'copy': {
+        copy: {
             name: '复制',
         },
-        'paste': {
+        paste: {
             name: '粘贴',
         },
     },

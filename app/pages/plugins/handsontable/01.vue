@@ -26,6 +26,8 @@
                     colHeaders: true,
                     contextMenu: true,
                     dropdownMenu: true,
+                    minSpareCols: 2,
+                    minSpareRows: 2,
                 });
 
                 table.updateSettings({
