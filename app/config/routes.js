@@ -5,6 +5,9 @@
 import NotFound from '../pages/404';
 import Index from '../pages/index';
 
+import Events from '../pages/events/index';
+import Dblclick from '../pages/events/dblclick';
+
 import Components from '../pages/components/index';
 import Components01 from '../pages/components/01/parent';
 
@@ -35,6 +38,14 @@ export default [
     },{
         path: '/components/01',
         component: Components01
+    },
+
+    {
+        path: '/events',
+        component: Events
+    },{
+        path: '/events/dblclick',
+        component: Dblclick
     },
 
     {
