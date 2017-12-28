@@ -21,6 +21,9 @@
                         name: 'components',
                         route: '/components',
                     },{
+                        name: 'events',
+                        route: '/events',
+                    },{
                         name: 'plugins',
                         route: '/plugins',
                     },{
