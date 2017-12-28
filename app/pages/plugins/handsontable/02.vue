@@ -18,6 +18,10 @@
     function radioRenderer(instance, td, row, col, prop, value, cellProperties) {
         Handsontable.renderers.TextRenderer.apply(this, arguments);
 
+        if (value === null) {
+            return;
+        }
+
         if (value.type === 'radio') {
             td.innerHTML = `<input type="radio" name="radio-${value.group}"> ${value.text}`;
 
@@ -72,6 +76,7 @@
         methods: {
             init() {
                 const container = document.getElementById('v-table');
+                const self = this;
                 this.table = new Handsontable(container, {
                     data: data,
                     rowHeaders: true,
@@ -83,6 +88,35 @@
                         cellProperties.renderer = radioRenderer;
                         cellProperties.editor = radioEditor;
                         return cellProperties;
+                    },
+                    beforeCreateRow: function(index, amount, source) {
+                        console.log('beforeCreateRow', index, amount, source);
+                    },
+                    afterCreateRow: function(index) {
+                        let data = self.table.getData();
+                        const groupId = ('' + Math.random()).substr(2);
+                        let maxLength = 0;
+                        data.forEach((group, groupIndex) => {
+                            maxLength = group.length > maxLength ? group.length : maxLength;
+                        });
+                        for (let i = 0; i < maxLength; i++) {
+                            if (i === 0) {
+                                self.table.setDataAtCell(index, i, {
+                                    group: groupId,
+                                    type: 'head',
+                                    text: '',
+                                });
+                            } else {
+                                self.table.setDataAtCell(index, i, {
+                                    group: groupId,
+                                    type: 'radio',
+                                    text: '',
+                                    selected: false,
+                                });
+                            }
+                        }
+
+                        console.log('afterCreateRow', self.table.render());
                     },
                 });
 
