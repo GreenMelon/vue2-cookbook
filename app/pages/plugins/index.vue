@@ -18,6 +18,9 @@
                             },{
                                 name: '自定义renderer',
                                 route: '/plugins/handsontable/02',
+                            },{
+                                name: '复制剪切粘贴',
+                                route: '/plugins/handsontable/03',
                             }
                         ],
                     },{

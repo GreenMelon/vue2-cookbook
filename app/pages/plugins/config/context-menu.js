@@ -34,6 +34,17 @@ const ContextMenu = {
         },
         paste: {
             name: '粘贴',
+            disabled: function () {
+                if (!window.clipboardCache) {
+                    window.clipboardCache = '';
+                }
+                return window.clipboardCache.length === 0;
+            },
+            callback: function () {
+                const plugin = this.getPlugin('copyPaste');
+                this.listen();
+                plugin.paste(window.clipboardCache);
+            }
         },
     },
     callback() {
