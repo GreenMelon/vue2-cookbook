@@ -100,6 +100,7 @@ module.exports = {
             filter: path.join(__dirname, './app/filters'),
             components: path.join(__dirname, './app/components'),
             vue: path.join(__dirname, 'node_modules/vue/dist/vue'),
+            node: path.join(__dirname, 'node_modules/'),
             '@': path.join(__dirname, 'app'),
             'images': path.join(__dirname, 'app/images'),
         }
