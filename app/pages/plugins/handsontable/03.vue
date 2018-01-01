@@ -34,6 +34,7 @@
                     rowHeaders: true,
                     colHeaders: true,
                     contextMenu: true,
+                    className: 'htCenter htMiddle',
                     beforeCopy: function (data, coords) {
                         console.log('beforeCopy', data, coords);
                     },
