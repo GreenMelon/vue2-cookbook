@@ -35,9 +35,7 @@
                     contextMenu: true,
                     multiSelect: true,
                     className: 'htCenter htMiddle',
-                    fillHandle: {
-                        direction: 'vertical',
-                    },
+                    fillHandle: true,
                     beforeCopy(data, coords) {
                         console.log('beforeCopy', data, coords);
                     },
@@ -71,9 +69,24 @@
                     },
                     beforeAutofill(startCellCoords, endCellCoords, data) {
                         console.log('beforeAutofill', startCellCoords, endCellCoords, data);
+
                         const { selection } = self;
-                        const originalData = self.getDataAtCell(selection[1], selection[0], selection[2]);
-                        // console.log('originalData', originalData);
+                        let direction;
+                        let originalData;
+                        if (startCellCoords.row === endCellCoords.row && startCellCoords.col === endCellCoords.col) {
+                            return;
+                        } else if (startCellCoords.row === endCellCoords.row) {
+                            direction = 'horizontal';
+                        } else if (startCellCoords.col === endCellCoords.col) {
+                            direction = 'vertical';
+                        }
+
+                        if (direction === 'vertical') {
+                            originalData = self.getCellDataAtCol(selection[1], selection[0], selection[2]);
+                        } else if (direction === 'horizontal') {
+                            originalData = self.getCellDataAtRow(selection[0], selection[1], selection[3]);
+                        }
+                        console.log('originalData', originalData);
 
                         const res = self.validateArithmeticProgression(originalData);
                         console.log('validateResult', res);
@@ -81,9 +94,16 @@
                         if (res.isValid) {
                             setTimeout(() => {
                                 let index = 1;
-                                for (let i = startCellCoords.row; i <= endCellCoords.row; i++) {
-                                    self.table.setDataAtCell(i, endCellCoords.col, res.start + index * res.d);
-                                    index++;
+                                if (direction === 'vertical') {
+                                    for (let i = startCellCoords.row; i <= endCellCoords.row; i++) {
+                                        self.table.setDataAtCell(i, endCellCoords.col, res.start + index * res.d);
+                                        index++;
+                                    }
+                                } else if (direction === 'horizontal') {
+                                    for (let i = startCellCoords.col; i <= endCellCoords.col; i++) {
+                                        self.table.setDataAtCell(endCellCoords.row, i, res.start + index * res.d);
+                                        index++;
+                                    }
                                 }
                             }, 10);
                         }
@@ -102,10 +122,18 @@
                 }
                 return data;
             },
-            getDataAtCell(col, startRow, endRow) {
+            getCellDataAtCol(col, startRow, endRow) {
                 const series = [];
                 for (let i = startRow; i <= endRow; i++) {
                     const data = this.table.getDataAtCell(i, col);
+                    series.push(data);
+                };
+                return series;
+            },
+            getCellDataAtRow(row, startCol, endCol) {
+                const series = [];
+                for (let i = startCol; i <= endCol; i++) {
+                    const data = this.table.getDataAtCell(row, i);
                     series.push(data);
                 };
                 return series;
