@@ -21,6 +21,9 @@
                             },{
                                 name: '复制剪切粘贴',
                                 route: '/plugins/handsontable/03',
+                            },{
+                                name: '边缘检测',
+                                route: '/plugins/handsontable/04',
                             }
                         ],
                     },{
