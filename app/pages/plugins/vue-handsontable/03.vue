@@ -64,6 +64,7 @@
         this.TEXTAREA.value = this.originalValue.text;
         Handsontable.dom.empty(this.TEXTAREA_PARENT);
         this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+        this.TEXTAREA.focus();
     };
     radioEditor.prototype.close = function() {
         Handsontable.editors.TextEditor.prototype.close.apply(this, arguments);
