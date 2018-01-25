@@ -92,11 +92,6 @@ module.exports = function(config) {
                 }
             ]
         },
-        vue: {
-            loaders: {
-                js: 'babel-loader',
-            },
-        },
     },
     coverageIstanbulReporter: {
         reports: [ 'text-summary', 'html' ],

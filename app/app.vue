@@ -31,13 +31,10 @@
                         route: '/instances',
                     }
                 ],
-                title: 'app',
             }
         },
         methods: {},
         mounted() {
-            this.title = 'Hello world';
-
             this.$nextTick(function () {
                 // this.$el;
             });
