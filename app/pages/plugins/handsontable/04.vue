@@ -26,11 +26,37 @@
             return {
                 table: {},
                 data: [
-                    [1, 2, 3, 4, 5],
-                    [1, 2, 3, 4, 5],
-                    [1, 2, 3, 4, 5],
-                    [1, 2, 3, 4, 5],
-                    [1, 2, 3, 4, 5]
+                    [
+                        { text: 1 },
+                        { text: 2 },
+                        { text: 3 },
+                        { text: 4 },
+                        { text: 5 }
+                    ],[
+                        { text: 1 },
+                        { text: 2 },
+                        { text: 3 },
+                        { text: 4 },
+                        { text: 5 }
+                    ],[
+                        { text: 1 },
+                        { text: 2 },
+                        { text: 3 },
+                        { text: 4 },
+                        { text: 5 }
+                    ],[
+                        { text: 1 },
+                        { text: 2 },
+                        { text: 3 },
+                        { text: 4 },
+                        { text: 5 }
+                    ],[
+                        { text: 1 },
+                        { text: 2 },
+                        { text: 3 },
+                        { text: 4 },
+                        { text: 5 }
+                    ]
                 ],
                 setting: {
                     rowHeaders: true,
