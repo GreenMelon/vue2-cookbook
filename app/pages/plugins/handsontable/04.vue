@@ -21,6 +21,38 @@
     import Handsontable from 'handsontable';
     import ContextMenu from '../config/context-menu';
 
+    // custom renderer
+    function textRenderer(instance, td, row, col, prop, value, cellProperties) {
+        Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+        if (value === null) {
+            return;
+        }
+
+        td.innerHTML = `${value.text}`;
+    };
+    Handsontable.renderers.registerRenderer('textRenderer', textRenderer);
+
+    // custom editor
+    const textEditor = Handsontable.editors.TextEditor.prototype.extend();
+    textEditor.prototype.beginEditing = function() {
+        Handsontable.editors.TextEditor.prototype.beginEditing.apply(this, arguments);
+
+        this.TEXTAREA = document.createElement('textarea');
+        this.TEXTAREA.value = this.originalValue.text;
+        Handsontable.dom.empty(this.TEXTAREA_PARENT);
+        this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+        this.TEXTAREA.focus();
+    };
+    textEditor.prototype.close = function() {
+        Handsontable.editors.TextEditor.prototype.close.apply(this, arguments);
+
+        const data = this.instance.getData();
+        const { row, col } = this;
+        data[row][col].text = this.TEXTAREA.value;
+        this.instance.render();
+    };
+
     export default {
         data() {
             return {
@@ -77,6 +109,12 @@
                 const container = document.getElementById('example');
                 this.table = new Handsontable(container, Object.assign({
                     data: this.data,
+                    cells(row, col, prop) {
+                        const cellProperties = {};
+                        cellProperties.renderer = textRenderer;
+                        cellProperties.editor = textEditor;
+                        return cellProperties;
+                    },
                 }, this.setting));
 
                 this.table.updateSettings({
