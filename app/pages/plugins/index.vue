@@ -40,7 +40,15 @@
                                 route: '/plugins/vue-handsontable/03',
                             }
                         ],
-                    }
+                    },{
+                        name: 'RxJS',
+                        instances: [
+                            {
+                                name: '示例',
+                                route: '/plugins/rxjs/01',
+                            }
+                        ],
+                    },
                 ],
             }
         },

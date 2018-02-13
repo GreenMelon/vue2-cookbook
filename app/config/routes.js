@@ -19,6 +19,7 @@ import Handsontable04 from '../pages/plugins/handsontable/04';
 import VueHandsontable01 from '../pages/plugins/vue-handsontable/01';
 import VueHandsontable02 from '../pages/plugins/vue-handsontable/02';
 import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
+import Rx01 from '../pages/plugins/rxjs/01';
 
 import Instances from '../pages/instances/index';
 import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
@@ -74,6 +75,9 @@ export default [
     },{
         path: '/plugins/vue-handsontable/03',
         component: VueHandsontable03
+    },{
+        path: '/plugins/rxjs/01',
+        component: Rx01
     },
 
     {
