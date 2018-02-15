@@ -2,7 +2,9 @@
 </style>
 
 <template>
-    <main></main>
+    <main>
+        <button type="button">click</button>
+    </main>
 </template>
 
 <script>
@@ -12,9 +14,17 @@
         data() {
             return {}
         },
-        methods: {},
+        methods: {
+            binding() {
+                const button = document.querySelector('button');
+
+                Rx.Observable
+                    .fromEvent(button, 'click')
+                    .subscribe(() => alert('Clicked!'));
+            },
+        },
         mounted() {
-            console.log('Rx', Rx);
+            this.binding();
         },
     };
 </script>
