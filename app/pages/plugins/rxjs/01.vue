@@ -20,7 +20,8 @@
 
                 Rx.Observable
                     .fromEvent(button, 'click')
-                    .subscribe(() => alert('Clicked!'));
+                    .scan(count => count + 1, 0)
+                    .subscribe(() => alert(`Clicked ${count} times`));
             },
         },
         mounted() {
