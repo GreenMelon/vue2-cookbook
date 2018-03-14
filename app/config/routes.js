@@ -25,6 +25,7 @@ import Instances from '../pages/instances/index';
 import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
 import Rasterizehtml02 from '../pages/instances/rasterizehtml/02';
 import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
+import Submit from '../pages/instances/form/submit';
 
 export default [
     {
@@ -92,6 +93,9 @@ export default [
     },{
         path: '/instances/rasterizehtml/03',
         component: Rasterizehtml03
+    },{
+        path: '/instances/form/submit',
+        component: Submit
     },
 
     {
