@@ -29,6 +29,9 @@
                             {
                                 name: 'submit',
                                 route: '/instances/form/submit',
+                            },{
+                                name: 'formdata',
+                                route: '/instances/form/formdata',
                             }
                         ],
                     }
