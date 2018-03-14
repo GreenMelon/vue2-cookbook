@@ -23,6 +23,14 @@
                                 route: '/instances/rasterizehtml/03',
                             }
                         ],
+                    },{
+                        name: '表单',
+                        instances: [
+                            {
+                                name: 'submit',
+                                route: '/instances/form/submit',
+                            }
+                        ],
                     }
                 ],
             }
