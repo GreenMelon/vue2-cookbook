@@ -31,7 +31,15 @@
                                 route: '/rxjs/observable/03',
                             }
                         ],
-                    }
+                    },{
+                        name: '观察者',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/rxjs/observer/01',
+                            }
+                        ],
+                    },
                 ],
             }
         },
