@@ -29,6 +29,9 @@ import Formdata from '../pages/instances/form/formdata';
 
 import Rxjs from '../pages/rxjs/index';
 import RxjsIntroduction01 from '../pages/rxjs/introduction/01';
+import RxjsObservable01 from '../pages/rxjs/observable/01';
+import RxjsObservable02 from '../pages/rxjs/observable/02';
+import RxjsObservable03 from '../pages/rxjs/observable/03';
 
 export default [
     {
@@ -107,6 +110,15 @@ export default [
     },{
         path: '/rxjs/introduction/01',
         component: RxjsIntroduction01
+    },{
+        path: '/rxjs/observable/01',
+        component: RxjsObservable01
+    },{
+        path: '/rxjs/observable/02',
+        component: RxjsObservable02
+    },{
+        path: '/rxjs/observable/03',
+        component: RxjsObservable03
     },
 
     {
