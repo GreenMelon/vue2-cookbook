@@ -33,6 +33,7 @@ import RxjsObservable01 from '../pages/rxjs/observable/01';
 import RxjsObservable02 from '../pages/rxjs/observable/02';
 import RxjsObservable03 from '../pages/rxjs/observable/03';
 import RxjsObserver01 from '../pages/rxjs/observer/01';
+import RxjsSubscription01 from '../pages/rxjs/subscription/01';
 
 export default [
     {
@@ -123,6 +124,9 @@ export default [
     },{
         path: '/rxjs/observer/01',
         component: RxjsObserver01
+    },{
+        path: '/rxjs/subscription/01',
+        component: RxjsSubscription01
     },
 
     {
