@@ -39,6 +39,14 @@
                                 route: '/rxjs/observer/01',
                             }
                         ],
+                    },{
+                        name: '订阅',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/rxjs/subscription/01',
+                            }
+                        ],
                     },
                 ],
             }
