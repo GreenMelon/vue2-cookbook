@@ -19,7 +19,6 @@ import Handsontable04 from '../pages/plugins/handsontable/04';
 import VueHandsontable01 from '../pages/plugins/vue-handsontable/01';
 import VueHandsontable02 from '../pages/plugins/vue-handsontable/02';
 import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
-import Rx01 from '../pages/plugins/rxjs/01';
 
 import Instances from '../pages/instances/index';
 import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
@@ -27,6 +26,9 @@ import Rasterizehtml02 from '../pages/instances/rasterizehtml/02';
 import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
 import Submit from '../pages/instances/form/submit';
 import Formdata from '../pages/instances/form/formdata';
+
+import Rxjs from '../pages/rxjs/index';
+import RxjsIntroduction01 from '../pages/rxjs/introduction/01';
 
 export default [
     {
@@ -77,9 +79,6 @@ export default [
     },{
         path: '/plugins/vue-handsontable/03',
         component: VueHandsontable03
-    },{
-        path: '/plugins/rxjs/01',
-        component: Rx01
     },
 
     {
@@ -100,6 +99,14 @@ export default [
     },{
         path: '/instances/form/formdata',
         component: Formdata
+    },
+
+    {
+        path: '/rxjs',
+        component: Rxjs
+    },{
+        path: '/rxjs/introduction/01',
+        component: RxjsIntroduction01
     },
 
     {

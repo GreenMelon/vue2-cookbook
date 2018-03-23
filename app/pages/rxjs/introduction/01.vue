@@ -15,17 +15,16 @@
             return {}
         },
         methods: {
-            binding() {
+            init() {
                 const button = document.querySelector('button');
 
                 Rx.Observable
                     .fromEvent(button, 'click')
-                    .scan(count => count + 1, 0)
-                    .subscribe(() => alert(`Clicked ${count} times`));
+                    .subscribe(() => console.log('clicked'));
             },
         },
         mounted() {
-            this.binding();
+            this.init();
         },
     };
 </script>

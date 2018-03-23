@@ -5,4 +5,5 @@ coverage/
 *.sublime-workspace
 .vscode/
 .vscode-upload.json
+.history/
 .DS_Store
