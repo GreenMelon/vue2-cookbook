@@ -29,6 +29,9 @@
                     },{
                         name: 'instances',
                         route: '/instances',
+                    },{
+                        name: 'RxJS',
+                        route: '/rxjs',
                     }
                 ],
             }
