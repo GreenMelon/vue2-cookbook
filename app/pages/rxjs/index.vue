@@ -47,6 +47,14 @@
                                 route: '/rxjs/subscription/01',
                             }
                         ],
+                    },{
+                        name: '操作符',
+                        instances: [
+                            {
+                                name: 'of',
+                                route: '/rxjs/operator/of',
+                            }
+                        ],
                     },
                 ],
             }
