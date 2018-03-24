@@ -34,6 +34,7 @@ import RxjsObservable02 from '../pages/rxjs/observable/02';
 import RxjsObservable03 from '../pages/rxjs/observable/03';
 import RxjsObserver01 from '../pages/rxjs/observer/01';
 import RxjsSubscription01 from '../pages/rxjs/subscription/01';
+import RxjsOperatorOf from '../pages/rxjs/operator/of';
 
 export default [
     {
@@ -127,6 +128,9 @@ export default [
     },{
         path: '/rxjs/subscription/01',
         component: RxjsSubscription01
+    },{
+        path: '/rxjs/operator/of',
+        component: RxjsOperatorOf
     },
 
     {
