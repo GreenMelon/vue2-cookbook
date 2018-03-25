@@ -53,6 +53,9 @@
                             {
                                 name: 'of',
                                 route: '/rxjs/operator/of',
+                            },{
+                                name: 'take',
+                                route: '/rxjs/operator/take',
                             }
                         ],
                     },
