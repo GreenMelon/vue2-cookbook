@@ -36,6 +36,7 @@ import RxjsObserver01 from '../pages/rxjs/observer/01';
 import RxjsSubscription01 from '../pages/rxjs/subscription/01';
 import RxjsOperatorOf from '../pages/rxjs/operator/of';
 import RxjsOperatorTake from '../pages/rxjs/operator/take';
+import RxjsOperatorTakeUntil from '../pages/rxjs/operator/take-until';
 
 export default [
     {
@@ -135,6 +136,9 @@ export default [
     },{
         path: '/rxjs/operator/take',
         component: RxjsOperatorTake
+    },{
+        path: '/rxjs/operator/take-until',
+        component: RxjsOperatorTakeUntil
     },
 
     {
