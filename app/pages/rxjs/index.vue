@@ -56,6 +56,9 @@
                             },{
                                 name: 'take',
                                 route: '/rxjs/operator/take',
+                            },{
+                                name: 'takeUntil',
+                                route: '/rxjs/operator/take-until',
                             }
                         ],
                     },
