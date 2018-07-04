@@ -45,6 +45,7 @@
 # 技术栈
 - vue
 - vue-router
+- vuex
 
 # 其他库
 - jquery
