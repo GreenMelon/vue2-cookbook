@@ -35,7 +35,7 @@ const store = new Vuex.Store({
         increment (context) {
             context.commit('increment');
         },
-        decrement ({ commit }, x) {
+        decrement ({ commit }) {
             // store.commit('decrement', {
             //     amount: 10,
             // });
