@@ -48,6 +48,14 @@
                                 route: '/plugins/rxjs/01',
                             }
                         ],
+                    },{
+                        name: 'psd-to-templet',
+                        instances: [
+                            {
+                                name: '透明 SVG 元素',
+                                route: '/plugins/psd-to-templet/01',
+                            }
+                        ],
                     },
                 ],
             }
