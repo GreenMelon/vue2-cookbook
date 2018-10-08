@@ -28,7 +28,7 @@
         },
         methods: {},
         mounted() {
-            console.log(111, this.$router);
+            console.log('mounted', this.$router);
         },
     }
 </script>
