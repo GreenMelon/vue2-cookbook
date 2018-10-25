@@ -27,6 +27,7 @@ import Rasterizehtml02 from '../pages/instances/rasterizehtml/02';
 import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
 import Submit from '../pages/instances/form/submit';
 import Formdata from '../pages/instances/form/formdata';
+import ImageFile from '../pages/instances/form/image-file';
 
 import Rxjs from '../pages/rxjs/index';
 import RxjsIntroduction01 from '../pages/rxjs/introduction/01';
@@ -111,6 +112,9 @@ export default [
     },{
         path: '/instances/form/formdata',
         component: Formdata
+    },{
+        path: '/instances/form/image-file',
+        component: ImageFile
     },
 
     {
