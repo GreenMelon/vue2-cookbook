@@ -32,6 +32,9 @@
                             },{
                                 name: 'formdata',
                                 route: '/instances/form/formdata',
+                            },{
+                                name: 'image-file',
+                                route: '/instances/form/image-file',
                             }
                         ],
                     }
