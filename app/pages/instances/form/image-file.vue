@@ -40,7 +40,7 @@
 </template>
 
 <script>
-    import Pica from 'pica';
+    import Pica from 'pica/dist/pica.js';
 
     export default {
         data() {
@@ -115,9 +115,9 @@
                             canvas.height = height;
 
                             console.time(`Pica ${index}`);
-
+ 
                             Pica({
-                                // features: ['js', 'ww'],
+                                features: ['js', 'ww'],
                             })
                             .resize(img, canvas, {
                                 unsharpThreshold: 0,
