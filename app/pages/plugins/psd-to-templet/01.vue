@@ -19,7 +19,7 @@
 <script>
     import Vue from 'vue';
     import VuePosterEditor from 'vue-poster-editor';
-    import psdToTemplet from 'psd-to-templet';
+    import PsdToTemplet from 'psd-to-templet';
     import TEMPLATE from '@/data/editor-data-01';
 
     Vue.use(VuePosterEditor);
@@ -40,9 +40,9 @@
         methods: {
             parsePSD(ev) {
                 const { editor } = this;
-                const { files } = ev.srcElement
+                const { files } = ev.srcElement;
 
-                psdToTemplet(files[0])
+                PsdToTemplet(files[0])
                     .then(layouts => {
                         layouts.forEach(layout => {
                             const svgElements = layout.elems.filter(i => i.type === 'svg');
