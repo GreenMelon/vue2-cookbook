@@ -5,6 +5,7 @@ import Store from './store';
 import routes from './config/routes';
 import filters from './filters/index';
 import directives from './directives/index';
+import './utils/log';
 
 Vue.use(VueRouter);
 Vue.config.debug = true;
