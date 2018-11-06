@@ -3,6 +3,7 @@
 
     // reset editor style
     .editor-container {
+        padding-top: 0 !important;
         overflow: visible;
     }
     .editor-shell-wrap {
@@ -58,7 +59,7 @@
 <script>
     import Vue from 'vue';
     import VuePosterEditor from 'vue-poster-editor';
-    import PsdToTemplet from 'psd-to-templet';
+    import PsdToTemplet from '@gaoding/psd-to-templet';
     import EDITOR_TEMPLATE from '@/data/editor-data-02';
 
     Vue.use(VuePosterEditor);
@@ -66,11 +67,14 @@
     export default {
         data() {
             return {
-                zoom: 0.4,
+                zoom: 1,
                 isLayerShow: false,
                 editor: null,
                 editorOptions: {
+                    mode: 'flow',
                     fontList: [],
+                    crossOriginal: false,
+                    hookImagePicker: true,
                 },
                 layoutData: {},
 
@@ -81,11 +85,29 @@
         },
         computed: {},
         methods: {
-            initLayer() {
+            setBackgroundLayout() {
                 const { editor } = this;
-                const backgroundLayout = editor.layouts.find(l => l.title === '背景');
+
+                const totalLayoutHeight = editor.layouts.reduce((prevSum, layout) => {
+                    const height = layout.title === '背景' ? 0 : layout.height;
+                    return prevSum + height;
+                }, 0);
+
+                const backgroundLayout = editor.layouts.find(l => l.title === '背景') || {
+                    title: '背景',
+                    top: 0,
+                    width: 790,
+                    height: totalLayoutHeight,
+                    backgroundColor: '#ffffffff',
+                    elements: [],
+                };
+                backgroundLayout.elements.forEach(e => e.frozen = true);
                 this.layoutData = Object.assign({}, backgroundLayout);
+
                 editor.removeLayout(backgroundLayout);
+            },
+            initLayer() {
+                this.setBackgroundLayout();
                 
                 this.isLayerShow = true;
             },
@@ -103,17 +125,32 @@
             parsePSD(ev) {
                 const { editor } = this;
                 const { files } = ev.srcElement;
+                const options = {
+                    parseSVG: true,
+                    groupMode: 'tag', // flat tag merge
+                    defaultTextType: 'block',
+                    imageQuality: 20,
+                    imageMaxWidth: 5000,
+                    imageMaxHeight: 5000,
+                    onProgress: (data) => {
+                        console.log(data);
+                    },
+                };
 
-                PsdToTemplet(files[0])
+                PsdToTemplet(files[0], options)
                     .then(layouts => {
                         console.log({ layouts });
+
+                        this.setTemplet({
+                            layouts,
+                        });
                     })
                     .catch(err => console.error)
             },
-            setTemplet() {
+            setTemplet(editorData) {
                 const { editor } = this;
 
-                editor.setTemplet(EDITOR_TEMPLATE);
+                editor.setTemplet(editorData);
             },
             onEditorTempletLoaded() {
                 this.innerStyle = {
@@ -135,7 +172,7 @@
         },
         mounted() {
             this.initEditor();
-            this.setTemplet();
+            this.setTemplet(EDITOR_TEMPLATE);
         },
     };
 </script>

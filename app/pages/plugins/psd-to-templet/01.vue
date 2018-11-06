@@ -19,7 +19,7 @@
 <script>
     import Vue from 'vue';
     import VuePosterEditor from 'vue-poster-editor';
-    import PsdToTemplet from 'psd-to-templet';
+    import PsdToTemplet from '@gaoding/psd-to-templet';
     import TEMPLATE from '@/data/editor-data-01';
 
     Vue.use(VuePosterEditor);
