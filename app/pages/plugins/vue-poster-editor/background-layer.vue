@@ -77,7 +77,6 @@
                     hookImagePicker: true,
                 },
                 layoutData: {},
-
                 innerStyle: {
                     height: '0',
                 },
@@ -88,9 +87,9 @@
             setBackgroundLayout() {
                 const { editor } = this;
 
-                const totalLayoutHeight = editor.layouts.reduce((prevSum, layout) => {
+                const totalLayoutHeight = editor.layouts.reduce((prevHeight, layout) => {
                     const height = layout.title === '背景' ? 0 : layout.height;
-                    return prevSum + height;
+                    return prevHeight + height;
                 }, 0);
 
                 const backgroundLayout = editor.layouts.find(l => l.title === '背景') || {
@@ -105,10 +104,7 @@
                 this.layoutData = Object.assign({}, backgroundLayout);
 
                 editor.removeLayout(backgroundLayout);
-            },
-            initLayer() {
-                this.setBackgroundLayout();
-                
+
                 this.isLayerShow = true;
             },
             initEditor() {
@@ -118,7 +114,7 @@
                     Console.log('editor.templet.ready');
 
                     this.editor.zoom = this.zoom;
-                    this.initLayer();
+                    this.setBackgroundLayout();
                     this.onEditorTempletLoaded();
                 });
             },
