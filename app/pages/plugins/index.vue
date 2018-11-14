@@ -54,6 +54,9 @@
                             {
                                 name: '透明 SVG 元素',
                                 route: '/plugins/psd-to-templet/01',
+                            },{
+                                name: '测试 PSD 的 category',
+                                route: '/plugins/psd-to-templet/02',
                             }
                         ],
                     },{
