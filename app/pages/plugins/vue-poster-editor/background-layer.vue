@@ -23,30 +23,38 @@
         left: 50%;
         transform: translateX(-50%);
     }
+
+    .disabled {
+        pointer-events: none;
+    }
 </style>
 
 <template>
     <main>
-        <div
-            :style="innerStyle"
-            id="editor-containner"
-        >
-            <!-- editor-layout -->
-            <editor-layout
-                v-if="isLayerShow"
-                :options="editorOptions"
-                :editor="editor"
-                :global="editor.global"
-                :layout="layoutData"
-                class="editor-background-layout"
-            ></editor-layout>
+            <p>
+                <button @click="toggleLayer">toggleLayer</button>
+            </p>
 
-            <!-- editor -->
-            <editor
-                ref="editor"
-                :editor-options="editorOptions"
-            ></editor>
-        </div>
+            <div
+                :style="innerStyle"
+                id="editor-containner"
+            >
+                <!-- editor-layout -->
+                <editor-layout
+                    v-if="isLayerShow"
+                    :options="editorOptions"
+                    :editor="editor"
+                    :global="editor.global"
+                    :layout="layoutData"
+                    class="editor-background-layout"
+                ></editor-layout>
+
+                <!-- editor -->
+                <editor
+                    ref="editor"
+                    :editor-options="editorOptions"
+                ></editor>
+            </div>
 
         <input
             @change="parsePSD"
@@ -100,7 +108,7 @@
                     backgroundColor: '#ffffffff',
                     elements: [],
                 };
-                backgroundLayout.elements.forEach(e => e.frozen = true);
+                // backgroundLayout.elements.forEach(e => e.frozen = true);
                 this.layoutData = Object.assign({}, backgroundLayout);
 
                 editor.removeLayout(backgroundLayout);
@@ -164,6 +172,15 @@
                         height: `${this.editor.height * this.editor.zoom}px`,
                     };
                 });
+            },
+            toggleLayer() {
+                const editorEontainer = document.getElementsByClassName('editor-container')[0];
+                const { className } = editorEontainer;
+                if (className.indexOf('disabled') === -1) {
+                    editorEontainer.classList.add('disabled');
+                } else {
+                    editorEontainer.classList.remove('disabled');
+                };
             },
         },
         mounted() {
