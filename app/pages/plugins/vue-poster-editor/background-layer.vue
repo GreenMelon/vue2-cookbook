@@ -175,11 +175,12 @@
             },
             toggleLayer() {
                 const editorEontainer = document.getElementsByClassName('editor-container')[0];
-                const { className } = editorEontainer;
+                const { className, classList } = editorEontainer;
+
                 if (className.indexOf('disabled') === -1) {
-                    editorEontainer.classList.add('disabled');
+                    classList.add('disabled');
                 } else {
-                    editorEontainer.classList.remove('disabled');
+                    classList.remove('disabled');
                 };
             },
         },
