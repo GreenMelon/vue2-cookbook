@@ -67,7 +67,15 @@
                                 route: '/plugins/vue-poster-editor/background-layer',
                             }
                         ],
-                    },
+                    },{
+                        name: 'qrcode',
+                        instances: [
+                            {
+                                name: '二维码',
+                                route: '/plugins/qrcode/01',
+                            }
+                        ],
+                    }
                 ],
             }
         },
