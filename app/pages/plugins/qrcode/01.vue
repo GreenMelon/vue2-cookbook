@@ -32,7 +32,10 @@
     export default {
         data() {
             return {
-                QRCODE_JS_URL: 'https://github.com/davidshimjs/qrcodejs/blob/master/qrcode.min.js',
+                QRCODE_JS_URL: 'http://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js',
+                reference: [
+                    'https://codepen.io/davidshimjs/pen/NdBYrg'
+                ],
                 url: 'https://github.com/greenmelon/vue2-cookbook',
             }
         },
@@ -47,7 +50,16 @@
                 return this.loadQrCode()
                     .then(QRCode => {
                         const container = document.getElementById('qrcode');
-                        new QRCode(container, url);
+                        
+                        // new QRCode(container, this.url);
+
+                        new QRCode(container, {
+                            text: this.url,
+                            width: 128,
+                            height: 128,
+                            colorDark: "#8a2be2",
+                            colorLight: "#ffffff",
+                        });
                     });
             },
         },
