@@ -2,6 +2,7 @@
  * routes
  */
 
+// const NotFound = () => import('../pages/404');
 import NotFound from '../pages/404';
 import Index from '../pages/index';
 

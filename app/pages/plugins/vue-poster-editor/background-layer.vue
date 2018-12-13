@@ -31,30 +31,30 @@
 
 <template>
     <main>
-            <p>
-                <button @click="toggleLayer">toggleLayer</button>
-            </p>
+        <p>
+            <button @click="toggleLayer">toggleLayer</button>
+        </p>
 
-            <div
-                :style="innerStyle"
-                id="editor-containner"
-            >
-                <!-- editor-layout -->
-                <editor-layout
-                    v-if="isLayerShow"
-                    :options="editorOptions"
-                    :editor="editor"
-                    :global="editor.global"
-                    :layout="layoutData"
-                    class="editor-background-layout"
-                ></editor-layout>
+        <div
+            :style="innerStyle"
+            id="editor-containner"
+        >
+            <!-- editor-layout -->
+            <editor-layout
+                v-if="isLayerShow"
+                :options="editorOptions"
+                :editor="editor"
+                :global="editor.global"
+                :layout="layoutData"
+                class="editor-background-layout"
+            ></editor-layout>
 
-                <!-- editor -->
-                <editor
-                    ref="editor"
-                    :editor-options="editorOptions"
-                ></editor>
-            </div>
+            <!-- editor -->
+            <editor
+                ref="editor"
+                :editor-options="editorOptions"
+            ></editor>
+        </div>
 
         <input
             @change="parsePSD"
@@ -75,7 +75,7 @@
     export default {
         data() {
             return {
-                zoom: 1,
+                zoom: 0.5,
                 isLayerShow: false,
                 editor: null,
                 editorOptions: {
