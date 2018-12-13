@@ -1,4 +1,7 @@
 <style lang="less" scoped>
+    main {
+        position: relative;
+    }
 </style>
 
 <template>
