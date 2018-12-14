@@ -32,7 +32,14 @@
 <template>
     <main>
         <p>
-            <button @click="toggleLayer">toggleLayer</button>
+            <button
+                v-show="!backgroundMode"
+                @click="toggleBackgroundMode(true)">编辑背景
+            </button>
+            <button
+                v-show="backgroundMode"
+                @click="toggleBackgroundMode(true)">退出编辑背景
+            </button>
         </p>
 
         <div
@@ -88,9 +95,25 @@
                 innerStyle: {
                     height: '0',
                 },
+
+                backgroundMode: false,
             }
         },
         computed: {},
+        watch: {
+            backgroundMode(value) {
+                const editorEontainer = document.getElementsByClassName('editor-container')[0];
+                const { className, classList } = editorEontainer;
+
+                if (value) {
+                    classList.add('disabled');
+                    this.bindHotKey();
+                } else {
+                    classList.remove('disabled');
+                    this.unbindHotKey();
+                };
+            },
+        },
         methods: {
             setBackgroundLayout() {
                 const { editor } = this;
@@ -173,15 +196,22 @@
                     };
                 });
             },
-            toggleLayer() {
-                const editorEontainer = document.getElementsByClassName('editor-container')[0];
-                const { className, classList } = editorEontainer;
+            onEscKeyPress(evt) {
+                console.log(evt.keyCode);
 
-                if (className.indexOf('disabled') === -1) {
-                    classList.add('disabled');
-                } else {
-                    classList.remove('disabled');
-                };
+                // 按住 ESC 退出编辑背景
+                if (evt.keyCode === 27) {
+                    this.toggleBackgroundMode(false);
+                }
+            },
+            bindHotKey() {
+                document.addEventListener('keydown', this.onEscKeyPress, false);
+            },
+            unbindHotKey() {
+                document.removeEventListener('keydown', this.onEscKeyPress, false);
+            },
+            toggleBackgroundMode(mode) {
+                this.backgroundMode = mode;
             },
         },
         mounted() {
