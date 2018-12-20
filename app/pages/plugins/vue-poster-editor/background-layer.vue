@@ -38,7 +38,7 @@
             </button>
             <button
                 v-show="backgroundMode"
-                @click="toggleBackgroundMode(true)">退出编辑背景
+                @click="toggleBackgroundMode(false)">退出编辑背景
             </button>
         </p>
 
@@ -76,6 +76,7 @@
     import VuePosterEditor from 'vue-poster-editor';
     import PsdToTemplet from '@gaoding/psd-to-templet';
     import EDITOR_TEMPLATE from '@/data/editor-data-02';
+    import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-03';
 
     Vue.use(VuePosterEditor);
 
@@ -103,7 +104,7 @@
         watch: {
             backgroundMode(value) {
                 const editorEontainer = document.getElementsByClassName('editor-container')[0];
-                const { className, classList } = editorEontainer;
+                const { classList } = editorEontainer;
 
                 if (value) {
                     classList.add('disabled');
@@ -111,7 +112,7 @@
                 } else {
                     classList.remove('disabled');
                     this.unbindHotKey();
-                };
+                }
             },
         },
         methods: {
@@ -216,7 +217,7 @@
         },
         mounted() {
             this.initEditor();
-            this.setTemplet(EDITOR_TEMPLATE);
+            this.setTemplet(ONLINE_EDITOR_TEMPLATE || EDITOR_TEMPLATE);
         },
     };
 </script>
