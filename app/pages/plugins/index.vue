@@ -65,6 +65,9 @@
                             {
                                 name: '背景图层的实现设计',
                                 route: '/plugins/vue-poster-editor/background-layer',
+                            },{
+                                name: '背景图层的实现设计',
+                                route: '/plugins/vue-poster-editor/background-shot',
                             }
                         ],
                     },{

@@ -23,6 +23,7 @@ import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
 import PsdToTemplet01 from '../pages/plugins/psd-to-templet/01';
 import PsdToTemplet02 from '../pages/plugins/psd-to-templet/02';
 import VuePosterEditor01 from '../pages/plugins/vue-poster-editor/background-layer';
+import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-shot';
 import Qrcode01 from '../pages/plugins/qrcode/01';
 
 import Instances from '../pages/instances/index';
@@ -102,6 +103,9 @@ export default [
     },{
         path: '/plugins/vue-poster-editor/background-layer',
         component: VuePosterEditor01,
+    },{
+        path: '/plugins/vue-poster-editor/background-shot',
+        component: VuePosterEditor02,
     },{
         path: '/plugins/qrcode/01',
         component: Qrcode01,
