@@ -2,6 +2,11 @@
     main {
         position: relative;
     }
+    input {
+        position: absolute;
+        top: 10px;
+        z-index: 1;
+    }
 </style>
 
 <template>
@@ -45,7 +50,19 @@
                 const { editor } = this;
                 const { files } = ev.srcElement;
 
-                PsdToTemplet(files[0])
+                const options = {
+                    parseSVG: true,
+                    groupMode: 'tag', // flat tag merge
+                    defaultTextType: 'block',
+                    imageQuality: 20,
+                    imageMaxWidth: 5000,
+                    imageMaxHeight: 5000,
+                    onProgress: (data) => {
+                        console.log(data);
+                    },
+                };
+
+                return PsdToTemplet(files[0], options)
                     .then(layouts => {
                         layouts.forEach(layout => {
                             const svgElements = layout.elems.filter(i => i.type === 'svg');
@@ -53,7 +70,9 @@
                             console.log({ svgElements });
                         });
 
-                        editor.setTemplet(TEMPLATE);
+                        return editor.setTemplet({
+                            layouts,
+                        });
                     })
                     .catch(err => console.error)
             },
