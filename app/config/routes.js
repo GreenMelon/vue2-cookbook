@@ -11,6 +11,7 @@ import Dblclick from '../pages/events/dblclick';
 
 import Components from '../pages/components/index';
 import Components01 from '../pages/components/01/parent';
+import Confirm from '../pages/components/dialog/confirm';
 
 import Plugins from '../pages/plugins/index';
 import Handsontable01 from '../pages/plugins/handsontable/01';
@@ -60,6 +61,9 @@ export default [
     },{
         path: '/components/01',
         component: Components01
+    },{
+        path: '/components/dialog/confirm',
+        component: Confirm
     },
 
     {
