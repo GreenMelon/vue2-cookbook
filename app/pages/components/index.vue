@@ -17,6 +17,14 @@
                                 route: '/components/01',
                             }
                         ],
+                    }, {
+                        name: 'dialog',
+                        instances: [
+                            {
+                                name: 'confirm',
+                                route: '/components/dialog/confirm',
+                            }
+                        ],
                     }
                 ],
             }
