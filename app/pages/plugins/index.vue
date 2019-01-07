@@ -68,6 +68,9 @@
                             },{
                                 name: '背景图层的实现设计',
                                 route: '/plugins/vue-poster-editor/background-shot',
+                            },{
+                                name: '蒙版图框与普通图框',
+                                route: '/plugins/vue-poster-editor/mask',
                             }
                         ],
                     },{
