@@ -1,4 +1,4 @@
-<style lang="less">
+<style lang="less" scoped>
     @import (css) '../../../../node_modules/vue-poster-editor/lib/styles/vue-poster-editor.css';
 
     .editor-wrapper {
@@ -6,11 +6,36 @@
         height: 100%;
         overflow: scroll;
     }
+
+    .toolbar {
+        position: absolute;
+        z-index: 4;
+    }
+    .checkbox {
+        margin: 0 10px;
+        font-size: 18px;
+    }
 </style>
 
 <template>
     <main>
         <div class="editor-wrapper">
+            <div class="toolbar">
+                <label
+                    class="checkbox"
+                    for="checkbox"
+                >
+                    <input
+                        v-model="isMask"
+                        id="checkbox"
+                        type="checkbox"
+                    >
+                    <span>蒙版图框</span>
+                </label>
+
+                <button @click="changeElement">替换图片</button>
+            </div>
+
             <!-- editor -->
             <editor
                 ref="editor"
@@ -23,7 +48,7 @@
 <script>
     import Vue from 'vue';
     import VuePosterEditor from 'vue-poster-editor';
-    import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-04';
+    import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-05';
 
     Vue.use(VuePosterEditor);
 
@@ -39,22 +64,36 @@
                     crossOriginal: false,
                     hookImagePicker: true,
                 },
+
+                isMask: true,
             }
         },
-        computed: {},
+        computed: {
+            currentElement() {
+                return this.editor && this.editor.currentElement;
+            },
+        },
         watch: {},
         methods: {
             initEditor() {
                 this.editor = this.$refs.editor;
 
                 this.editor.$events.$on('editor.templet.ready', () => {
-                    this.editor.zoom = this.zoom;
+                    const { editor } = this;
+                    editor.zoom = this.zoom;
+                    editor.focusElement(editor.layouts[0].elements[0])
                 });
             },
-            setTemplet(editorData) {
-                const { editor } = this;
-
-                editor.setTemplet(editorData);
+            setTemplet(templet) {
+                this.editor.setTemplet(templet);
+            },
+            changeElement() {
+                const { editor, currentElement, isMask } = this;
+                const url = '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg';
+                this.editor.changeElement({
+                    url,
+                    mask: isMask ? currentElement.mask : url,
+                });
             },
         },
         mounted() {
