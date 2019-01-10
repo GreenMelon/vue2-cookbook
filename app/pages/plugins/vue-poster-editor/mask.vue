@@ -77,14 +77,14 @@
             isNormalMask(value) {
                 const { currentElement } = this;
                 currentElement.customData = currentElement.customData || {};
+                const { customData } = currentElement;
                 if (value) {
-                    const { customData } = currentElement;
                     customData.isNormalMask = true;
                     if (!customData.originMask) {
                         customData.originMask = currentElement.mask;
                     }
                 } else {
-                    this.currentElement.customData.isNormalMask = false;
+                    customData.isNormalMask = false;
                 }
             },
         },
