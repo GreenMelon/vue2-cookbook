@@ -26,11 +26,11 @@
                     for="checkbox"
                 >
                     <input
-                        v-model="isMask"
+                        v-model="isNormalMask"
                         id="checkbox"
                         type="checkbox"
                     >
-                    <span>蒙版图框</span>
+                    <span>普通图框</span>
                 </label>
 
                 <button @click="changeElement">替换图片</button>
@@ -65,7 +65,7 @@
                     hookImagePicker: true,
                 },
 
-                isMask: true,
+                isNormalMask: false,
             }
         },
         computed: {
@@ -73,7 +73,21 @@
                 return this.editor && this.editor.currentElement;
             },
         },
-        watch: {},
+        watch: {
+            isNormalMask(value) {
+                const { currentElement } = this;
+                currentElement.customData = currentElement.customData || {};
+                if (value) {
+                    const { customData } = currentElement;
+                    customData.isNormalMask = true;
+                    if (!customData.originMask) {
+                        customData.originMask = currentElement.mask;
+                    }
+                } else {
+                    this.currentElement.customData.isNormalMask = false;
+                }
+            },
+        },
         methods: {
             initEditor() {
                 this.editor = this.$refs.editor;
@@ -88,12 +102,25 @@
                 this.editor.setTemplet(templet);
             },
             changeElement() {
-                const { editor, currentElement, isMask } = this;
                 const url = '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg';
-                this.editor.changeElement({
-                    url,
-                    mask: isMask ? currentElement.mask : url,
-                });
+                const {
+                    editor,
+                    currentElement: {
+                        customData = {},
+                    },
+                } = this;
+
+                if (customData.isNormalMask) {
+                    this.editor.changeElement({
+                        url,
+                        mask: url,
+                    });
+                } else {
+                    this.editor.changeElement({
+                        url,
+                        mask: customData.originMask,
+                    });
+                }
             },
         },
         mounted() {
