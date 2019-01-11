@@ -77,14 +77,14 @@
             isNormalMask(value) {
                 const { currentElement } = this;
                 currentElement.customData = currentElement.customData || {};
+                const { customData } = currentElement;
                 if (value) {
-                    const { customData } = currentElement;
                     customData.isNormalMask = true;
                     if (!customData.originMask) {
                         customData.originMask = currentElement.mask;
                     }
                 } else {
-                    this.currentElement.customData.isNormalMask = false;
+                    customData.isNormalMask = false;
                 }
             },
         },
@@ -102,24 +102,45 @@
                 this.editor.setTemplet(templet);
             },
             changeElement() {
-                const url = '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg';
+                const image = {
+                    naturalHeight: 420,
+                    naturalWidth: 418,
+                    url: '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg',
+                };
+
+                const {
+                    naturalHeight,
+                    naturalWidth,
+                    url,
+                } = image;
+
                 const {
                     editor,
+                    currentElement,
                     currentElement: {
                         customData = {},
                     },
                 } = this;
 
                 if (customData.isNormalMask) {
-                    this.editor.changeElement({
-                        url,
-                        mask: url,
-                    });
+                    // this.editor.changeElement({
+                    //     url,
+                    //     mask: url,
+                    // });
+
+                    currentElement.imageHeight = naturalHeight * 1;
+                    currentElement.imageWidth = naturalWidth * 1;
+                    currentElement.url = url;
+                    currentElement.mask = url;
                 } else {
-                    this.editor.changeElement({
-                        url,
-                        mask: customData.originMask,
-                    });
+                    // this.editor.changeElement({
+                    //     url,
+                    //     mask: customData.originMask,
+                    // });
+
+                    currentElement.imageHeight = naturalHeight * 1;
+                    currentElement.imageWidth = naturalWidth * 1;
+                    currentElement.url = url;
                 }
             },
         },
