@@ -25,7 +25,8 @@ import PsdToTemplet01 from '../pages/plugins/psd-to-templet/01';
 import PsdToTemplet02 from '../pages/plugins/psd-to-templet/02';
 import VuePosterEditor01 from '../pages/plugins/vue-poster-editor/background-layer';
 import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-shot';
-import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/mask';
+import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/background-image';
+import VuePosterEditor04 from '../pages/plugins/vue-poster-editor/mask';
 import Qrcode01 from '../pages/plugins/qrcode/01';
 
 import Instances from '../pages/instances/index';
@@ -112,8 +113,11 @@ export default [
         path: '/plugins/vue-poster-editor/background-shot',
         component: VuePosterEditor02,
     },{
-        path: '/plugins/vue-poster-editor/mask',
+        path: '/plugins/vue-poster-editor/background-image',
         component: VuePosterEditor03,
+    },{
+        path: '/plugins/vue-poster-editor/mask',
+        component: VuePosterEditor04,
     },{
         path: '/plugins/qrcode/01',
         component: Qrcode01,

@@ -71,6 +71,9 @@
                             },{
                                 name: '蒙版图框与普通图框',
                                 route: '/plugins/vue-poster-editor/mask',
+                            },{
+                                name: '模块背景图',
+                                route: '/plugins/vue-poster-editor/background-image',
                             }
                         ],
                     },{
