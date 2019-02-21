@@ -62,6 +62,8 @@
                         return e.category = 'layout-background-image';
                     });
                     editor.focusElement(layoutBackgroundImage);
+
+                    this.setBackgroundImage();
                 });
             },
             setTemplet(templet) {

@@ -11,7 +11,9 @@
     export default {
         methods: {
             handleClick() {
-                this.$confirm('caigua')
+                this.$confirm('caigua', {
+                    confirmText: '删除x',
+                })
                     .then(res => {
                         console.log('yes');
                     })
