@@ -7,7 +7,7 @@
 <template>
     <main>
         <div>
-            <h1>测试 PSD 的 category</h1>
+            <h1>测试 PSD 的背景</h1>
             <input
                 @change="parsePSD"
                 accept=".psd"
@@ -36,6 +36,7 @@
             return {
                 editorOptions: {
                     fontList: [],
+                    mode: 'flow',
                 },
             }
         },
@@ -45,8 +46,11 @@
             },
         },
         methods: {
+            isBackgroundElement(element) {
+                return element.category && element.category.indexOf('bg_') !== -1;
+            },
             parsePSD(ev) {
-                const { editor } = this;
+                const { editor, isBackgroundElement } = this;
                 const { files } = ev.srcElement;
 
                 const options = {
@@ -63,9 +67,31 @@
 
                 return PsdToTemplet(files[0], options)
                     .then(layouts => {
+                        // layouts.forEach(layout => {
+                        //     layout.elements = layout.elems;
+                        // });
+
+                        const backgroundElements = [];
+                        const normalElements = [];
+
                         layouts.forEach(layout => {
-                            layout.elements = layout.elems;
+                            layout.elems.forEach(elem => {
+                                if (isBackgroundElement(elem)) {
+                                    backgroundElements.push(elem);
+                                } else {
+                                    normalElements.push(elem);
+                                }
+                            });
+
+                            layout.elems = normalElements;
                         });
+
+                        const backgroundLayout = {
+                            height: layouts[0].height,
+                            width: layouts[0].width,
+                            elems: backgroundElements,
+                        };
+                        layouts.push(backgroundLayout);
 
                         return editor.setTemplet({
                             layouts,
