@@ -34,6 +34,7 @@
     export default {
         data() {
             return {
+                zoom: 0.5,
                 editorOptions: {
                     fontList: [],
                     mode: 'flow',
@@ -67,10 +68,7 @@
 
                 return PsdToTemplet(files[0], options)
                     .then(layouts => {
-                        // layouts.forEach(layout => {
-                        //     layout.elements = layout.elems;
-                        // });
-
+                        debugger;
                         const backgroundElements = [];
                         const normalElements = [];
 
@@ -99,7 +97,15 @@
                     })
                     .catch(err => console.error)
             },
+            initEditor() {
+                this.editor.$events.$on('editor.templet.ready', () => {
+                    this.editor.zoom = this.zoom;
+                    window.editor = this.editor;
+                });
+            },
         },
-        mounted() {},
+        mounted() {
+            this.initEditor();
+        },
     };
 </script>
