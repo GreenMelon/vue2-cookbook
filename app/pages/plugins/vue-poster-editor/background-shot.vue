@@ -106,6 +106,7 @@
             },
             initEditor() {
                 this.editor = this.$refs.editor;
+                window.editor = this.editor;
 
                 this.editor.$events.$on('editor.templet.ready', () => {
                     Console.log('editor.templet.ready');
@@ -152,7 +153,7 @@
                     const backgroundElements = elements
                         .filter(element => {
                             element.bottom = element.top + element.height;
-                            return !(element.bottom < 0 || element.top > layout.height);
+                            return !(element.bottom <= 0 || element.top >= layout.height);
                         })
                         .map(element => {
                             return Object.assign({}, element);
@@ -161,13 +162,17 @@
                     elements.forEach(element => {
                         element.top -= layout.height;
                     });
-                    
+
                     return Object.assign({}, layout, {
                         elements: backgroundElements.concat(layout.elements),
                     });
                 });
 
                 console.log({ layouts, backgroundLayout, shotLayouts });
+
+                this.editor.setTemplet({
+                    layouts: shotLayouts,
+                });
             },
         },
         mounted() {

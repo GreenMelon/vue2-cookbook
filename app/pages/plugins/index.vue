@@ -61,7 +61,7 @@
                                 name: '背景图层的实现设计',
                                 route: '/plugins/vue-poster-editor/background-layer',
                             },{
-                                name: '背景图层的实现设计',
+                                name: '背景图层的截图分割',
                                 route: '/plugins/vue-poster-editor/background-shot',
                             },{
                                 name: '蒙版图框与普通图框',
