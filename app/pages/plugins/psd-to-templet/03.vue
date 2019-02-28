@@ -68,7 +68,8 @@
 
                 return PsdToTemplet(files[0], options)
                     .then(layouts => {
-                        debugger;
+                        console.log(layouts);
+
                         const backgroundElements = [];
                         const normalElements = [];
 
@@ -90,6 +91,8 @@
                             elems: backgroundElements,
                         };
                         layouts.push(backgroundLayout);
+
+                        layouts = layouts.filter(layout => layout.elems.length !== 0);
 
                         return editor.setTemplet({
                             layouts,
