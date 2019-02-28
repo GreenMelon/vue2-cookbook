@@ -28,9 +28,6 @@
                         name: 'instances',
                         route: '/instances',
                     },{
-                        name: 'RxJS',
-                        route: '/rxjs',
-                    },{
                         name: 'plugins',
                         route: '/plugins',
                     }

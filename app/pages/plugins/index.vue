@@ -41,14 +41,6 @@
                             }
                         ],
                     },{
-                        name: 'RxJS',
-                        instances: [
-                            {
-                                name: '示例',
-                                route: '/plugins/rxjs/01',
-                            }
-                        ],
-                    },{
                         name: 'psd-to-templet',
                         instances: [
                             {
