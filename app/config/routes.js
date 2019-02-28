@@ -38,17 +38,6 @@ import Submit from '../pages/instances/form/submit';
 import Formdata from '../pages/instances/form/formdata';
 import ImageFile from '../pages/instances/form/image-file';
 
-import Rxjs from '../pages/rxjs/index';
-import RxjsIntroduction01 from '../pages/rxjs/introduction/01';
-import RxjsObservable01 from '../pages/rxjs/observable/01';
-import RxjsObservable02 from '../pages/rxjs/observable/02';
-import RxjsObservable03 from '../pages/rxjs/observable/03';
-import RxjsObserver01 from '../pages/rxjs/observer/01';
-import RxjsSubscription01 from '../pages/rxjs/subscription/01';
-import RxjsOperatorOf from '../pages/rxjs/operator/of';
-import RxjsOperatorTake from '../pages/rxjs/operator/take';
-import RxjsOperatorTakeUntil from '../pages/rxjs/operator/take-until';
-
 export default [
     {
         path: '/',
@@ -148,38 +137,6 @@ export default [
     },{
         path: '/instances/form/image-file',
         component: ImageFile
-    },
-
-    {
-        path: '/rxjs',
-        component: Rxjs
-    },{
-        path: '/rxjs/introduction/01',
-        component: RxjsIntroduction01
-    },{
-        path: '/rxjs/observable/01',
-        component: RxjsObservable01
-    },{
-        path: '/rxjs/observable/02',
-        component: RxjsObservable02
-    },{
-        path: '/rxjs/observable/03',
-        component: RxjsObservable03
-    },{
-        path: '/rxjs/observer/01',
-        component: RxjsObserver01
-    },{
-        path: '/rxjs/subscription/01',
-        component: RxjsSubscription01
-    },{
-        path: '/rxjs/operator/of',
-        component: RxjsOperatorOf
-    },{
-        path: '/rxjs/operator/take',
-        component: RxjsOperatorTake
-    },{
-        path: '/rxjs/operator/take-until',
-        component: RxjsOperatorTakeUntil
     },
 
     {
