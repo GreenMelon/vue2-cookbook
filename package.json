@@ -22,7 +22,6 @@
     "@gaoding/psd-to-templet": "1.1.26-beta.8",
     "handsontable": "^0.35.0",
     "jquery": "^3.1.1",
-    "lodash": "^4.17.4",
     "pica": "4.1.1",
     "rasterizehtml": "^1.2.4",
     "vue": "^2.1.5",

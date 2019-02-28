@@ -29,7 +29,6 @@
 
 <script>
     import './child';
-    import _ from '@/utils/lodash';
 
     export default {
         data() {
@@ -41,10 +40,9 @@
         },
         computed: {},
         methods: {
-            doStuff: _.debounce(function(val) {
-                console.log('debounce', val, this.b);
-
-            }, 1000),
+            doStuff(val) {
+                console.log('debounce', val);
+            },
         },
         mounted() {
             console.log('child', this.$refs);
