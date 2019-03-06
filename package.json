@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/GreenMelon/vue2-cookbook#readme",
   "dependencies": {
-    "@gaoding/psd-to-templet": "2.0.0",
+    "@gaoding/psd-to-templet": "2.0.0-beta.1",
     "handsontable": "^0.35.0",
     "jquery": "^3.1.1",
     "pica": "4.1.1",
