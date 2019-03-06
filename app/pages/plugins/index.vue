@@ -52,6 +52,9 @@
                             },{
                                 name: '测试 PSD 的 背景元素解析',
                                 route: '/plugins/psd-to-templet/03',
+                            },{
+                                name: '测试 PSD 的 背景色解析',
+                                route: '/plugins/psd-to-templet/04',
                             }
                         ],
                     },{

@@ -24,6 +24,7 @@ import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
 import PsdToTemplet01 from '../pages/plugins/psd-to-templet/01';
 import PsdToTemplet02 from '../pages/plugins/psd-to-templet/02';
 import PsdToTemplet03 from '../pages/plugins/psd-to-templet/03';
+import PsdToTemplet04 from '../pages/plugins/psd-to-templet/04';
 import VuePosterEditor01 from '../pages/plugins/vue-poster-editor/background-layer';
 import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-shot';
 import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/background-image';
@@ -99,6 +100,9 @@ export default [
     },{
         path: '/plugins/psd-to-templet/03',
         component: PsdToTemplet03
+    },{
+        path: '/plugins/psd-to-templet/04',
+        component: PsdToTemplet04
     },{
         path: '/plugins/vue-poster-editor/background-layer',
         component: VuePosterEditor01,
