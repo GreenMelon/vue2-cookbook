@@ -13,6 +13,9 @@
                 accept=".psd"
                 type="file"
             >
+            <br>
+            <button @click="setBackgroundColor">设置背景色</button>
+            <button @click="setBackgroundImage">设置背景图</button>
         </div>
         
         <div class="editor-wrapper">
@@ -81,6 +84,12 @@
                     this.editor.zoom = this.zoom;
                     window.editor = this.editor;
                 });
+            },
+            setBackgroundColor() {
+                this.editor.currentLayout.backgroundColor = '#007dd4ff';
+            },
+            setBackgroundImage() {
+                this.editor.currentLayout.backgroundImage = '//cjxq.oss.aliyuncs.com/cjxq/1/20190114/1_design_upload_1547451197_8eh4T8_20190014-153318729-9112-1.jpg';
             },
         },
         mounted() {
