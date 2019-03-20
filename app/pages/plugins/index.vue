@@ -82,6 +82,14 @@
                                 route: '/plugins/qrcode/01',
                             }
                         ],
+                    },{
+                        name: 'tinycolor2',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/tinycolor2/01',
+                            }
+                        ],
                     }
                 ],
             }
