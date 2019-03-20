@@ -24,6 +24,7 @@
     "jquery": "^3.1.1",
     "pica": "4.1.1",
     "rasterizehtml": "^1.2.4",
+    "tinycolor2": "^1.4.1",
     "vue": "^2.1.5",
     "vue-handsontable-official": "^1.0.0",
     "vue-poster-editor": "5.6.1",

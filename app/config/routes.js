@@ -30,6 +30,7 @@ import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-sho
 import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/background-image';
 import VuePosterEditor04 from '../pages/plugins/vue-poster-editor/mask';
 import Qrcode01 from '../pages/plugins/qrcode/01';
+import Tinycolor01 from '../pages/plugins/tinycolor2/01';
 
 import Instances from '../pages/instances/index';
 import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
@@ -118,6 +119,9 @@ export default [
     },{
         path: '/plugins/qrcode/01',
         component: Qrcode01,
+    },{
+        path: '/plugins/tinycolor2/01',
+        component: Tinycolor01,
     },
 
     {
