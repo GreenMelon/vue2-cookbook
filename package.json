@@ -27,7 +27,7 @@
     "tinycolor2": "^1.4.1",
     "vue": "^2.1.5",
     "vue-handsontable-official": "^1.0.0",
-    "vue-poster-editor": "5.6.1",
+    "vue-poster-editor": "6.1.0",
     "vue-router": "^2.1.1",
     "vuex": "^3.0.1"
   },

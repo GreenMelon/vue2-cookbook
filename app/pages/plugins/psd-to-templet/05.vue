@@ -7,7 +7,7 @@
 <template>
     <main>
         <div>
-            <h1>V5.6.25 测试 PSD 的背景色</h1>
+            <h1>V6.1.0 测试 PSD 的背景色</h1>
             <input
                 @change="parsePSD"
                 accept=".psd"
@@ -29,12 +29,13 @@
 
 <script>
     import Vue from 'vue';
-    import VuePosterEditor from 'vue-poster-editor';
+    import { createPosterEditor } from 'vue-poster-editor';
     import PsdToTemplet from '@gaoding/psd-to-templet';
 
-    Vue.use(VuePosterEditor);
-
     export default {
+        components: {
+            Editor: createPosterEditor(Vue),
+        },
         data() {
             return {
                 zoom: 0.5,
@@ -80,7 +81,7 @@
                     .catch(err => console.error)
             },
             initEditor() {
-                this.editor.$events.$on('editor.templet.ready', () => {
+                this.editor.$events.$on('templet.created', () => {
                     this.editor.zoom = this.zoom;
                     window.editor = this.editor;
                 });

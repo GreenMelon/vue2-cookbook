@@ -44,33 +44,36 @@
                         name: 'psd-to-templet',
                         instances: [
                             {
-                                name: '透明 SVG 元素',
+                                name: 'V5.6.25 透明 SVG 元素',
                                 route: '/plugins/psd-to-templet/01',
                             },{
-                                name: '测试 PSD 的 category',
+                                name: 'V5.6.25 测试 PSD 的 category',
                                 route: '/plugins/psd-to-templet/02',
                             },{
-                                name: '测试 PSD 的 背景元素解析',
+                                name: 'V5.6.25 测试 PSD 的 背景元素解析',
                                 route: '/plugins/psd-to-templet/03',
                             },{
-                                name: '测试 PSD 的 背景色解析',
+                                name: 'V5.6.25 测试 PSD 的 背景色解析',
                                 route: '/plugins/psd-to-templet/04',
+                            },{
+                                name: 'V6.1.0 测试 PSD 的 背景色解析',
+                                route: '/plugins/psd-to-templet/05',
                             }
                         ],
                     },{
                         name: 'vue-poster-editor',
                         instances: [
                             {
-                                name: '背景图层的实现设计',
+                                name: 'V5.6.25 背景图层的实现设计',
                                 route: '/plugins/vue-poster-editor/background-layer',
                             },{
-                                name: '背景图层的截图分割',
+                                name: 'V5.6.25 背景图层的截图分割',
                                 route: '/plugins/vue-poster-editor/background-shot',
                             },{
-                                name: '蒙版图框与普通图框',
+                                name: 'V5.6.25 蒙版图框与普通图框',
                                 route: '/plugins/vue-poster-editor/mask',
                             },{
-                                name: '模块背景图',
+                                name: 'V5.6.25 模块背景图',
                                 route: '/plugins/vue-poster-editor/background-image',
                             }
                         ],
