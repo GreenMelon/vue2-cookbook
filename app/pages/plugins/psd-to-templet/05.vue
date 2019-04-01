@@ -16,8 +16,9 @@
             <br>
             <button @click="setBackgroundColor">设置背景色</button>
             <button @click="setBackgroundImage">设置背景图</button>
+            <button @click="exportImage">前端出图</button>
         </div>
-        
+
         <div class="editor-wrapper">
             <editor
                 ref="editor"
@@ -91,6 +92,19 @@
             },
             setBackgroundImage() {
                 this.editor.currentLayout.backgroundImage = '//cjxq.oss.aliyuncs.com/cjxq/1/20190114/1_design_upload_1547451197_8eh4T8_20190014-153318729-9112-1.jpg';
+                this.editor.currentLayout.backgroundRepeat = 'repeat';
+            },
+            exportImage() {
+                const { editor } = this;
+
+                editor.layouts.forEach(layout => {
+                    layout.elements = layout.elements.filter(element => element.type !== 'text');
+                });
+
+                editor.exportImage(editor.layouts[0]).then(canvas => {
+                    window.baseUrl = canvas.toDataURL();
+                    console.log(window.baseUrl);
+                });
             },
         },
         mounted() {
