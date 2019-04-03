@@ -93,6 +93,14 @@
                                 route: '/plugins/tinycolor2/01',
                             }
                         ],
+                    },{
+                        name: 'screenshot',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/screenshot/01',
+                            }
+                        ],
                     }
                 ],
             }
