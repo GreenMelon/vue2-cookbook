@@ -10,6 +10,14 @@
             return {
                 categories: [
                     {
+                        name: 'brace',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/brace/01',
+                            }
+                        ],
+                    },{
                         name: 'handsontable',
                         instances: [
                             {

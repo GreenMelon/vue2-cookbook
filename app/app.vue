@@ -30,6 +30,9 @@
                     },{
                         name: 'plugins',
                         route: '/plugins',
+                    },{
+                        name: 'test',
+                        route: '/test',
                     }
                 ],
             }
