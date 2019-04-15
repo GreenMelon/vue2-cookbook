@@ -14,6 +14,7 @@ import Components01 from '../pages/components/01/parent';
 import Confirm from '../pages/components/dialog/confirm';
 
 import Plugins from '../pages/plugins/index';
+import Brace01 from '../pages/plugins/brace/01';
 import Handsontable01 from '../pages/plugins/handsontable/01';
 import Handsontable02 from '../pages/plugins/handsontable/02';
 import Handsontable03 from '../pages/plugins/handsontable/03';
@@ -41,6 +42,11 @@ import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
 import Submit from '../pages/instances/form/submit';
 import Formdata from '../pages/instances/form/formdata';
 import ImageFile from '../pages/instances/form/image-file';
+
+import Test from '../pages/test/index';
+import Clipboard01 from '../pages/test/clipboard/01';
+import Filereader01 from '../pages/test/filereader/image';
+import ScrollTop01 from '../pages/test/scroll-top/01';
 
 export default [
     {
@@ -73,6 +79,9 @@ export default [
     {
         path: '/plugins',
         component: Plugins
+    },{
+        path: '/plugins/brace/01',
+        component: Brace01
     },{
         path: '/plugins/handsontable/01',
         component: Handsontable01
@@ -153,6 +162,20 @@ export default [
     },{
         path: '/instances/form/image-file',
         component: ImageFile
+    },
+
+    {
+        path: '/test',
+        component: Test
+    },{
+        path: '/test/clipboard/01',
+        component: Clipboard01
+    },{
+        path: '/test/filereader/image',
+        component: Filereader01
+    },{
+        path: '/test/scroll-top/01',
+        component: ScrollTop01
     },
 
     {
