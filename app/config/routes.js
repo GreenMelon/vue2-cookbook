@@ -12,6 +12,7 @@ import Dblclick from '../pages/events/dblclick';
 import Components from '../pages/components/index';
 import Components01 from '../pages/components/01/parent';
 import Confirm from '../pages/components/dialog/confirm';
+import Test01 from '../pages/components/test/01';
 
 import Plugins from '../pages/plugins/index';
 import Brace01 from '../pages/plugins/brace/01';
@@ -67,6 +68,9 @@ export default [
     },{
         path: '/components/dialog/confirm',
         component: Confirm
+    },,{
+        path: '/components/test/01',
+        component: Test01
     },
 
     {

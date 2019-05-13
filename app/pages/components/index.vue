@@ -25,6 +25,14 @@
                                 route: '/components/dialog/confirm',
                             }
                         ],
+                    }, {
+                        name: 'test',
+                        instances: [
+                            {
+                                name: '1',
+                                route: '/components/test/01',
+                            }
+                        ],
                     }
                 ],
             }
