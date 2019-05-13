@@ -12,6 +12,7 @@ import Dblclick from '../pages/events/dblclick';
 import Components from '../pages/components/index';
 import Components01 from '../pages/components/01/parent';
 import Confirm from '../pages/components/dialog/confirm';
+import Test01 from '../pages/components/test/01';
 
 import Plugins from '../pages/plugins/index';
 import Brace01 from '../pages/plugins/brace/01';
@@ -32,6 +33,7 @@ import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-sho
 import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/background-image';
 import VuePosterEditor04 from '../pages/plugins/vue-poster-editor/mask';
 import Qrcode01 from '../pages/plugins/qrcode/01';
+import Qrcode02 from '../pages/plugins/qrcode/02';
 import Tinycolor01 from '../pages/plugins/tinycolor2/01';
 import Screenshot01 from '../pages/plugins/screenshot/01';
 
@@ -66,6 +68,9 @@ export default [
     },{
         path: '/components/dialog/confirm',
         component: Confirm
+    },,{
+        path: '/components/test/01',
+        component: Test01
     },
 
     {
@@ -133,6 +138,9 @@ export default [
     },{
         path: '/plugins/qrcode/01',
         component: Qrcode01,
+    },{
+        path: '/plugins/qrcode/02',
+        component: Qrcode02,
     },{
         path: '/plugins/tinycolor2/01',
         component: Tinycolor01,

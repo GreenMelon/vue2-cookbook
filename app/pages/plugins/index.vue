@@ -89,8 +89,11 @@
                         name: 'qrcode',
                         instances: [
                             {
-                                name: '二维码',
+                                name: '二维码 (失效)',
                                 route: '/plugins/qrcode/01',
+                            },{
+                                name: '二维码',
+                                route: '/plugins/qrcode/02',
                             }
                         ],
                     },{
