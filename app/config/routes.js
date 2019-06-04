@@ -2,53 +2,52 @@
  * routes
  */
 
-// const NotFound = () => import('../pages/404');
-import NotFound from '../pages/404';
-import Index from '../pages/index';
+const NotFound = () => import('../pages/404');
+const Index = () => import('../pages/index');
 
-import Events from '../pages/events/index';
-import Dblclick from '../pages/events/dblclick';
+const Events = () => import('../pages/events/index');
+const Dblclick = () => import('../pages/events/dblclick');
 
-import Components from '../pages/components/index';
-import Components01 from '../pages/components/01/parent';
-import Confirm from '../pages/components/dialog/confirm';
-import Test01 from '../pages/components/test/01';
+const Components = () => import('../pages/components/index');
+const Components01 = () => import('../pages/components/01/parent');
+const Confirm = () => import('../pages/components/dialog/confirm');
+const Test01 = () => import('../pages/components/test/01');
 
-import Plugins from '../pages/plugins/index';
-import Brace01 from '../pages/plugins/brace/01';
-import Handsontable01 from '../pages/plugins/handsontable/01';
-import Handsontable02 from '../pages/plugins/handsontable/02';
-import Handsontable03 from '../pages/plugins/handsontable/03';
-import Handsontable04 from '../pages/plugins/handsontable/04';
-import VueHandsontable01 from '../pages/plugins/vue-handsontable/01';
-import VueHandsontable02 from '../pages/plugins/vue-handsontable/02';
-import VueHandsontable03 from '../pages/plugins/vue-handsontable/03';
-import PsdToTemplet01 from '../pages/plugins/psd-to-templet/01';
-import PsdToTemplet02 from '../pages/plugins/psd-to-templet/02';
-import PsdToTemplet03 from '../pages/plugins/psd-to-templet/03';
-import PsdToTemplet04 from '../pages/plugins/psd-to-templet/04';
-import PsdToTemplet05 from '../pages/plugins/psd-to-templet/05';
-import VuePosterEditor01 from '../pages/plugins/vue-poster-editor/background-layer';
-import VuePosterEditor02 from '../pages/plugins/vue-poster-editor/background-shot';
-import VuePosterEditor03 from '../pages/plugins/vue-poster-editor/background-image';
-import VuePosterEditor04 from '../pages/plugins/vue-poster-editor/mask';
-import Qrcode01 from '../pages/plugins/qrcode/01';
-import Qrcode02 from '../pages/plugins/qrcode/02';
-import Tinycolor01 from '../pages/plugins/tinycolor2/01';
-import Screenshot01 from '../pages/plugins/screenshot/01';
+const Plugins = () => import('../pages/plugins/index');
+const Brace01 = () => import('../pages/plugins/brace/01');
+const Handsontable01 = () => import('../pages/plugins/handsontable/01');
+const Handsontable02 = () => import('../pages/plugins/handsontable/02');
+const Handsontable03 = () => import('../pages/plugins/handsontable/03');
+const Handsontable04 = () => import('../pages/plugins/handsontable/04');
+const VueHandsontable01 = () => import('../pages/plugins/vue-handsontable/01');
+const VueHandsontable02 = () => import('../pages/plugins/vue-handsontable/02');
+const VueHandsontable03 = () => import('../pages/plugins/vue-handsontable/03');
+const PsdToTemplet01 = () => import('../pages/plugins/psd-to-templet/01');
+const PsdToTemplet02 = () => import('../pages/plugins/psd-to-templet/02');
+const PsdToTemplet03 = () => import('../pages/plugins/psd-to-templet/03');
+const PsdToTemplet04 = () => import('../pages/plugins/psd-to-templet/04');
+const PsdToTemplet05 = () => import('../pages/plugins/psd-to-templet/05');
+const VuePosterEditor01 = () => import('../pages/plugins/vue-poster-editor/background-layer');
+const VuePosterEditor02 = () => import('../pages/plugins/vue-poster-editor/background-shot');
+const VuePosterEditor03 = () => import('../pages/plugins/vue-poster-editor/background-image');
+const VuePosterEditor04 = () => import('../pages/plugins/vue-poster-editor/mask');
+const Qrcode01 = () => import('../pages/plugins/qrcode/01');
+const Qrcode02 = () => import('../pages/plugins/qrcode/02');
+const Tinycolor01 = () => import('../pages/plugins/tinycolor2/01');
+const Screenshot01 = () => import('../pages/plugins/screenshot/01');
 
-import Instances from '../pages/instances/index';
-import Rasterizehtml01 from '../pages/instances/rasterizehtml/01';
-import Rasterizehtml02 from '../pages/instances/rasterizehtml/02';
-import Rasterizehtml03 from '../pages/instances/rasterizehtml/03';
-import Submit from '../pages/instances/form/submit';
-import Formdata from '../pages/instances/form/formdata';
-import ImageFile from '../pages/instances/form/image-file';
+const Instances = () => import('../pages/instances/index');
+const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
+const Rasterizehtml02 = () => import('../pages/instances/rasterizehtml/02');
+const Rasterizehtml03 = () => import('../pages/instances/rasterizehtml/03');
+const Submit = () => import('../pages/instances/form/submit');
+const Formdata = () => import('../pages/instances/form/formdata');
+const ImageFile = () => import('../pages/instances/form/image-file');
 
-import Test from '../pages/test/index';
-import Clipboard01 from '../pages/test/clipboard/01';
-import Filereader01 from '../pages/test/filereader/image';
-import ScrollTop01 from '../pages/test/scroll-top/01';
+const Test = () => import('../pages/test/index');
+const Clipboard01 = () => import('../pages/test/clipboard/01');
+const Filereader01 = () => import('../pages/test/filereader/image');
+const ScrollTop01 = () => import('../pages/test/scroll-top/01');
 
 export default [
     {

@@ -46,7 +46,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015'],
+                    presets: ['es2015', 'stage-2'],
                     plugins: ['transform-runtime']
                 }
             },{
@@ -99,11 +99,11 @@ module.exports = {
         alias: {
             node: path.join(__dirname, 'node_modules/'),
             vue: path.join(__dirname, 'node_modules/vue/dist/vue'),
-            components: path.join(__dirname, './app/components'),
-            filter: path.join(__dirname, './app/filters'),
-            assets: path.join(__dirname, './app/assets'),
-            images: path.join(__dirname, 'app/images'),
             '@': path.join(__dirname, 'app'),
+            components: path.join(__dirname, './app/components'),
+            images: path.join(__dirname, 'app/images'),
+            assets: path.join(__dirname, './app/assets'),
+            filter: path.join(__dirname, './app/filters'),
         }
     },
     plugins: []
