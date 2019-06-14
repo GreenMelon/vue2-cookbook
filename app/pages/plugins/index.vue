@@ -112,6 +112,14 @@
                                 route: '/plugins/screenshot/01',
                             }
                         ],
+                    },{
+                        name: 'marked',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/marked',
+                            }
+                        ],
                     }
                 ],
             }

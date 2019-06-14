@@ -35,6 +35,7 @@ const Qrcode01 = () => import('../pages/plugins/qrcode/01');
 const Qrcode02 = () => import('../pages/plugins/qrcode/02');
 const Tinycolor01 = () => import('../pages/plugins/tinycolor2/01');
 const Screenshot01 = () => import('../pages/plugins/screenshot/01');
+const Marked = () => import('../pages/plugins/marked/index');
 
 const Instances = () => import('../pages/instances/index');
 const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
@@ -146,6 +147,9 @@ export default [
     },{
         path: '/plugins/screenshot/01',
         component: Screenshot01
+    },{
+        path: '/plugins/marked',
+        component: Marked
     },
 
     {
