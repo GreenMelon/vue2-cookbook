@@ -20,8 +20,8 @@
         <CodeEditor
             height="360"
             lang="json"
-            v-model="configJSON">
-        </CodeEditor>
+            v-model="configJSON"
+        />
     </main>
 </template>
 
