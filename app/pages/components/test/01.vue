@@ -1,21 +1,22 @@
 <template>
     <main>
-        <pagination
-            :total="total"
-            :current="current"
-            @prev="prev"
-            @next="next"
-        />
+        <Title
+            :level="1"
+            @click.native="onClick"
+        >
+            caigua
+        </Title>
     </main>
 </template>
 
 <script>
-import pagination from './pagination';
+import Title from './title';
 
 export default {
     components: {
-        pagination,
+        Title,
     },
+
     data() {
         return {
             total: 12,
@@ -23,16 +24,13 @@ export default {
         };
     },
 
+    mounted() {},
+
     methods: {
-        prev() {
-            this.current = Math.max(1, this.current - 1);
-        },
-        next() {
-            this.current = Math.min(this.total, this.current + 1);
+        onClick() {
+            console.log(222);
         },
     },
-
-    mounted() {},
 };
 </script>
 
