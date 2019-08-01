@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "webpack --progress --config webpack.dev.config.js",
-    "dev": "webpack-dev-server --port 8484 --inline --hot --compress --history-api-fallback --config webpack.dev.config.js"
+    "dev": "webpack-dev-server --port 8585 --open --inline --hot --compress --history-api-fallback --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
