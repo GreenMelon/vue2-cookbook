@@ -31,6 +31,9 @@
                             {
                                 name: '1',
                                 route: '/components/test/01',
+                            },{
+                                name: 'Click Tip',
+                                route: '/components/test/02',
                             }
                         ],
                     }

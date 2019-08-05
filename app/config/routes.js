@@ -12,6 +12,7 @@ const Components = () => import('../pages/components/index');
 const Components01 = () => import('../pages/components/01/parent');
 const Confirm = () => import('../pages/components/dialog/confirm');
 const Test01 = () => import('../pages/components/test/01');
+const Test02 = () => import('../pages/components/test/02');
 
 const Plugins = () => import('../pages/plugins/index');
 const Brace01 = () => import('../pages/plugins/brace/01');
@@ -68,9 +69,12 @@ export default [
     },{
         path: '/components/dialog/confirm',
         component: Confirm
-    },,{
+    },{
         path: '/components/test/01',
         component: Test01
+    },{
+        path: '/components/test/02',
+        component: Test02
     },
 
     {
