@@ -33,6 +33,14 @@
                                 route: '/test/scroll-top/01'
                             }
                         ],
+                    },{
+                        name: 'other',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/test/other/01'
+                            }
+                        ],
                     }
                 ],
             }
