@@ -50,6 +50,7 @@ const Test = () => import('../pages/test/index');
 const Clipboard01 = () => import('../pages/test/clipboard/01');
 const Filereader01 = () => import('../pages/test/filereader/image');
 const ScrollTop01 = () => import('../pages/test/scroll-top/01');
+const Other01 = () => import('../pages/test/other/01');
 
 export default [
     {
@@ -191,6 +192,9 @@ export default [
     },{
         path: '/test/scroll-top/01',
         component: ScrollTop01
+    },{
+        path: '/test/other/01',
+        component: Other01
     },
 
     {
