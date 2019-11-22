@@ -120,6 +120,14 @@
                                 route: '/plugins/marked',
                             }
                         ],
+                    }, {
+                        name: 'jimp',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/jimp',
+                            }
+                        ],
                     }
                 ],
             }

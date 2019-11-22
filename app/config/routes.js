@@ -37,6 +37,7 @@ const Qrcode02 = () => import('../pages/plugins/qrcode/02');
 const Tinycolor01 = () => import('../pages/plugins/tinycolor2/01');
 const Screenshot01 = () => import('../pages/plugins/screenshot/01');
 const Marked = () => import('../pages/plugins/marked/index');
+const Jimp = () => import('../pages/plugins/jimp/index');
 
 const Instances = () => import('../pages/instances/index');
 const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
@@ -55,10 +56,18 @@ const Other01 = () => import('../pages/test/other/01');
 export default [
     {
         path: '/',
-        redirect: '/index'
+        redirect: '/index',
     },{
         path: '/index',
         component: Index
+    },
+
+    {
+        path: '/events',
+        component: Events
+    },{
+        path: '/events/dblclick',
+        component: Dblclick
     },
 
     {
@@ -76,14 +85,6 @@ export default [
     },{
         path: '/components/test/02',
         component: Test02
-    },
-
-    {
-        path: '/events',
-        component: Events
-    },{
-        path: '/events/dblclick',
-        component: Dblclick
     },
 
     {
@@ -155,6 +156,9 @@ export default [
     },{
         path: '/plugins/marked',
         component: Marked
+    },{
+        path: '/plugins/jimp',
+        component: Jimp
     },
 
     {
@@ -200,6 +204,5 @@ export default [
     {
         path: '*',
         component: NotFound
-    }
-
+    },
 ];
