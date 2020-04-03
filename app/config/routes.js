@@ -38,6 +38,7 @@ const Tinycolor01 = () => import('../pages/plugins/tinycolor2/01');
 const Screenshot01 = () => import('../pages/plugins/screenshot/01');
 const Marked = () => import('../pages/plugins/marked/index');
 const Jimp = () => import('../pages/plugins/jimp/index');
+const Jszip = () => import('../pages/plugins/jszip/index');
 
 const Instances = () => import('../pages/instances/index');
 const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
@@ -159,6 +160,9 @@ export default [
     },{
         path: '/plugins/jimp',
         component: Jimp
+    },{
+        path: '/plugins/jszip',
+        component: Jszip
     },
 
     {
