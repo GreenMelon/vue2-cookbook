@@ -128,7 +128,15 @@
                                 route: '/plugins/jimp',
                             }
                         ],
-                    }
+                    }, {
+                        name: 'jszip',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/jszip',
+                            }
+                        ],
+                    },
                 ],
             }
         },
