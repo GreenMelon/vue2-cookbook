@@ -133,7 +133,10 @@
                         instances: [
                             {
                                 name: '01',
-                                route: '/plugins/jszip',
+                                route: '/plugins/jszip/01',
+                            }, {
+                                name: '02',
+                                route: '/plugins/jszip/02',
                             }
                         ],
                     },
