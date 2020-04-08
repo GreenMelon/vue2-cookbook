@@ -139,6 +139,14 @@
                                 route: '/plugins/jszip/02',
                             }
                         ],
+                    }, {
+                        name: 'xlsx',
+                        instances: [
+                            {
+                                name: '01',
+                                route: '/plugins/xlsx/01',
+                            }
+                        ],
                     },
                 ],
             }
