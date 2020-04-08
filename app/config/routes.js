@@ -40,6 +40,7 @@ const Marked = () => import('../pages/plugins/marked/index');
 const Jimp = () => import('../pages/plugins/jimp/index');
 const Jszip01 = () => import('../pages/plugins/jszip/01');
 const Jszip02 = () => import('../pages/plugins/jszip/02');
+const Xlsx01 = () => import('../pages/plugins/xlsx/01');
 
 const Instances = () => import('../pages/instances/index');
 const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
@@ -167,6 +168,9 @@ export default [
     },{
         path: '/plugins/jszip/02',
         component: Jszip02
+    },{
+        path: '/plugins/xlsx/01',
+        component: Xlsx01
     },
 
     {
