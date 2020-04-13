@@ -143,8 +143,11 @@
                         name: 'xlsx',
                         instances: [
                             {
-                                name: '01',
+                                name: 'write',
                                 route: '/plugins/xlsx/01',
+                            }, {
+                                name: 'read',
+                                route: '/plugins/xlsx/02',
                             }
                         ],
                     },

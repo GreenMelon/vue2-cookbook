@@ -41,6 +41,7 @@ const Jimp = () => import('../pages/plugins/jimp/index');
 const Jszip01 = () => import('../pages/plugins/jszip/01');
 const Jszip02 = () => import('../pages/plugins/jszip/02');
 const Xlsx01 = () => import('../pages/plugins/xlsx/01');
+const Xlsx02 = () => import('../pages/plugins/xlsx/02');
 
 const Instances = () => import('../pages/instances/index');
 const Rasterizehtml01 = () => import('../pages/instances/rasterizehtml/01');
@@ -171,6 +172,9 @@ export default [
     },{
         path: '/plugins/xlsx/01',
         component: Xlsx01
+    },{
+        path: '/plugins/xlsx/02',
+        component: Xlsx02
     },
 
     {
