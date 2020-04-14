@@ -30,6 +30,18 @@ export default {
             };
         },
 
+        readFile2(evt) {
+            const { fixedData } = this;
+            const [file] = evt.target.files;
+            const reader = new FileReader();
+            reader.readAsBinaryString(file);
+            reader.onload = function (e) {
+                const data = e.target.result;
+                const wb = XLSX.read(data, { type: 'binary' }); // 将数据转化为二进制
+                console.log(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]));
+            };
+        },
+
         // 文件流转 BinaryString
         fixedData(data) {
             let o = '';
