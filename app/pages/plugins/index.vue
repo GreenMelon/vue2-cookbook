@@ -137,6 +137,9 @@
                             }, {
                                 name: '02',
                                 route: '/plugins/jszip/02',
+                            }, {
+                                name: '03',
+                                route: '/plugins/jszip/03',
                             }
                         ],
                     }, {
