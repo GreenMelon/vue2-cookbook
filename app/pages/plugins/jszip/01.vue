@@ -11,6 +11,13 @@
             accept=".zip"
             @change="readStyleFile"
         >
+
+        <input
+            type="file"
+            @change="readImage"
+        >
+
+        <img :src="src" />
     </main>
 </template>
 
@@ -23,6 +30,7 @@ export default {
     data() {
         return {
             jszip: null,
+            src: '',
         }
     },
 
@@ -53,14 +61,60 @@ export default {
 
         readFile(evt) {
             const [file] = evt.target.files;
+            const options = {
+                // base64: true,
+            };
 
-            this.jszip.loadAsync(file)
+            this.jszip.loadAsync(file, options)
                 .then(zip => {
                     const { files } = zip;
                     const entries = Object.values(files);
-                    const validFiles = entries.filter(entry => this.validateName(entry.name));
-                    console.log({ validFiles });
+                    const validEntries = entries.filter(entry => this.validateName(entry.name) && !entry.dir);
+                    console.log({ validEntries });
+
+                    this.convertFilesToBase64(validEntries);
                 });
+        },
+
+        getBlob(entry) {
+            const { compressedContent } = entry._data;
+
+            const blob = new Blob(
+                [compressedContent],
+                { type: 'image/png' }
+            );
+
+            return new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = (e) => {
+                    resolve(reader.result);
+                    this.src = reader.result;
+                }
+                reader.readAsDataURL(blob);
+            });
+        },
+
+        getFileExt(name) {
+            const result = name.match(/\.(\w+)$/);
+            return result ? result[1].toLowerCase() : '';
+        },
+
+        getBase64(entry) {
+            const { name } = entry;
+            const ext = this.getFileExt(name);
+
+            return new Promise((resolve) => {
+                this.jszip.file(name).async('base64').then((content) => {
+                    const src = `data:image/${ext};base64,${content}`;
+                    this.src = src;
+                    resolve(src);
+                });
+            });
+        },
+
+        convertFilesToBase64(entries) {
+            // Promise.all(entries.map(this.getBlob)).then(() => {});
+            Promise.all(entries.map(this.getBase64)).then(() => {});
         },
 
         readStyleFile(evt) {
@@ -73,6 +127,15 @@ export default {
                 .then(text => {
                     console.log(text);
                 });
+        },
+
+        readImage(evt) {
+            const [file] = evt.target.files;
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                this.src = reader.result;
+            }
+            reader.readAsDataURL(file);
         },
     },
 };
