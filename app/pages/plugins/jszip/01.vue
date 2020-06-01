@@ -112,6 +112,18 @@ export default {
             });
         },
 
+        base64ToBlob(dataURI, ext) {
+            const byteString = atob(dataURI.split(',')[1]);
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+
+            return new Blob([ab], { type: `image/${ext}` });
+        },
+
         convertFilesToBase64(entries) {
             // Promise.all(entries.map(this.getBlob)).then(() => {});
             Promise.all(entries.map(this.getBase64)).then(() => {});
