@@ -60,6 +60,8 @@ export default {
         },
 
         readFile(evt) {
+            this.init();
+
             const [file] = evt.target.files;
             const options = {
                 // base64: true,
