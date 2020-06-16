@@ -15,24 +15,18 @@
 </template>
 
 <script>
-    import Vue from 'vue';
+import Vue from 'vue';
 
-    const Categories = Vue.extend({
-        props: {
-            categories: {
-                type: Array,
-                default: [],
-            },
+const Categories = Vue.extend({
+    props: {
+        categories: {
+            type: Array,
+            default: [],
         },
-        data() {
-            return {}
-        },
-        methods: {},
-        mounted() {},
-    });
+    },
+});
 
-    Vue.component('categories', Categories);
+Vue.component('categories', Categories);
 
-    export default Categories;
-
+export default Categories;
 </script>

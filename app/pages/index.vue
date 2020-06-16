@@ -1,10 +1,3 @@
-<style scoped>
-    img {
-        width: 400px;
-        height: auto;
-    }
-</style>
-
 <template>
     <main>
         <h1>Index</h1>
@@ -17,18 +10,24 @@
 </template>
 
 <script>
-    import preview2 from '@/images/blue-sky.jpg';
+import preview2 from '@/images/blue-sky.jpg';
 
-    export default {
-        data() {
-            return {
-                preview1: require('../images/blue-sky.jpg'),
-                preview2: preview2,
-            }
-        },
-        methods: {},
-        mounted() {
-            console.log('mounted', this.$router);
-        },
-    }
+export default {
+    data() {
+        return {
+            preview1: require('../images/blue-sky.jpg'),
+            preview2: preview2,
+        }
+    },
+    mounted() {
+        console.log('mounted', this.$router);
+    },
+}
 </script>
+
+<style scoped>
+img {
+    width: 400px;
+    height: auto;
+}
+</style>
