@@ -8,32 +8,33 @@
 </template>
 
 <script>
-    import QrCode from 'qrcode'
+// 二维码
+import QrCode from 'qrcode'
 
-    export default {
-        data() {
-            return {
-                //
-            }
-        },
-        methods: {
-            getQrCode() {
-                const canvas = document.getElementById('canvas');
+export default {
+    data() {
+        return {
+            //
+        }
+    },
+    methods: {
+        getQrCode() {
+            const canvas = document.getElementById('canvas');
 
-                QrCode.toCanvas(canvas, 'http://172.16.13.251:4000/#/index', function (error) {
-                    if (error) {
-                        console.error(error);
-                        return;
-                    }
-                    console.log('success!');
-                });
-            },
-            init() {
-                this.getQrCode();
-            },
+            QrCode.toCanvas(canvas, 'http://172.16.13.251:4000/#/index', function (error) {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
+                console.log('success!');
+            });
         },
-        mounted() {
-            this.init();
+        init() {
+            this.getQrCode();
         },
-    };
+    },
+    mounted() {
+        this.init();
+    },
+};
 </script>

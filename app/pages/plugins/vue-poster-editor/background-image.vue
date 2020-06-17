@@ -25,64 +25,65 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import VuePosterEditor from 'vue-poster-editor';
-    import EDITOR_TEMPLATE from '@/data/editor-data-06';
+// V5.6.25 模块背景图
+import Vue from 'vue';
+import VuePosterEditor from 'vue-poster-editor';
+import EDITOR_TEMPLATE from '@/data/editor-data-06';
 
-    Vue.use(VuePosterEditor);
+Vue.use(VuePosterEditor);
 
-    export default {
-        data() {
-            return {
-                zoom: 0.5,
-                editor: null,
-                editorOptions: {
-                    mode: 'flow',
-                    fontList: [],
-                    fontsMap: {},
-                    crossOriginal: false,
-                    hookImagePicker: true,
-                },
-            }
-        },
-        computed: {
-            currentElement() {
-                return this.editor && this.editor.currentElement;
+export default {
+    data() {
+        return {
+            zoom: 0.5,
+            editor: null,
+            editorOptions: {
+                mode: 'flow',
+                fontList: [],
+                fontsMap: {},
+                crossOriginal: false,
+                hookImagePicker: true,
             },
+        }
+    },
+    computed: {
+        currentElement() {
+            return this.editor && this.editor.currentElement;
         },
-        methods: {
-            initEditor() {
-                this.editor = this.$refs.editor;
+    },
+    methods: {
+        initEditor() {
+            this.editor = this.$refs.editor;
 
-                this.editor.$events.$on('editor.templet.ready', () => {
-                    const { editor } = this;
-                    editor.zoom = this.zoom;
+            this.editor.$events.$on('editor.templet.ready', () => {
+                const { editor } = this;
+                editor.zoom = this.zoom;
 
-                    const layoutBackgroundImage = editor.layouts[0].elements.find(e => {
-                        return e.category = 'layout-background-image';
-                    });
-                    editor.focusElement(layoutBackgroundImage);
-
-                    this.setBackgroundImage();
+                const layoutBackgroundImage = editor.layouts[0].elements.find(e => {
+                    return e.category = 'layout-background-image';
                 });
-            },
-            setTemplet(templet) {
-                this.editor.setTemplet(templet);
-            },
-            setBackgroundImage() {
-                const {
-                    currentLayout,
-                    currentElement,
-                    removeElement,
-                } = this.editor;
+                editor.focusElement(layoutBackgroundImage);
 
-                currentLayout.backgroundImage = currentElement.url;
-                removeElement();
-            },
+                this.setBackgroundImage();
+            });
         },
-        mounted() {
-            this.initEditor();
-            this.setTemplet(EDITOR_TEMPLATE);
+        setTemplet(templet) {
+            this.editor.setTemplet(templet);
         },
-    };
+        setBackgroundImage() {
+            const {
+                currentLayout,
+                currentElement,
+                removeElement,
+            } = this.editor;
+
+            currentLayout.backgroundImage = currentElement.url;
+            removeElement();
+        },
+    },
+    mounted() {
+        this.initEditor();
+        this.setTemplet(EDITOR_TEMPLATE);
+    },
+};
 </script>

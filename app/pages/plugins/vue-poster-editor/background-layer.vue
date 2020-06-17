@@ -72,152 +72,153 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import VuePosterEditor from 'vue-poster-editor';
-    import PsdToTemplet from '@gaoding/psd-to-templet';
-    import EDITOR_TEMPLATE from '@/data/editor-data-02';
-    import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-03';
+// V5.6.25 背景图层的实现设计
+import Vue from 'vue';
+import VuePosterEditor from 'vue-poster-editor';
+import PsdToTemplet from '@gaoding/psd-to-templet';
+import EDITOR_TEMPLATE from '@/data/editor-data-02';
+import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-03';
 
-    Vue.use(VuePosterEditor);
+Vue.use(VuePosterEditor);
 
-    export default {
-        data() {
-            return {
-                zoom: 0.5,
-                isLayerShow: false,
-                editor: null,
-                editorOptions: {
-                    mode: 'flow',
-                    fontList: [],
-                    crossOriginal: false,
-                    hookImagePicker: true,
-                },
-                layoutData: {},
-                innerStyle: {
-                    height: '0',
-                },
+export default {
+    data() {
+        return {
+            zoom: 0.5,
+            isLayerShow: false,
+            editor: null,
+            editorOptions: {
+                mode: 'flow',
+                fontList: [],
+                crossOriginal: false,
+                hookImagePicker: true,
+            },
+            layoutData: {},
+            innerStyle: {
+                height: '0',
+            },
 
-                backgroundMode: false,
+            backgroundMode: false,
+        }
+    },
+    computed: {},
+    watch: {
+        backgroundMode(value) {
+            const editorEontainer = document.getElementsByClassName('editor-container')[0];
+            const { classList } = editorEontainer;
+
+            if (value) {
+                classList.add('disabled');
+                this.bindHotKey();
+            } else {
+                classList.remove('disabled');
+                this.unbindHotKey();
             }
         },
-        computed: {},
-        watch: {
-            backgroundMode(value) {
-                const editorEontainer = document.getElementsByClassName('editor-container')[0];
-                const { classList } = editorEontainer;
+    },
+    methods: {
+        setBackgroundLayout() {
+            const { editor } = this;
 
-                if (value) {
-                    classList.add('disabled');
-                    this.bindHotKey();
-                } else {
-                    classList.remove('disabled');
-                    this.unbindHotKey();
-                }
-            },
+            const totalLayoutHeight = editor.layouts.reduce((prevHeight, layout) => {
+                const height = layout.title === '背景' ? 0 : layout.height;
+                return prevHeight + height;
+            }, 0);
+
+            const backgroundLayout = editor.layouts.find(l => l.title === '背景') || {
+                title: '背景',
+                top: 0,
+                width: 790,
+                height: totalLayoutHeight,
+                backgroundColor: '#ffffffff',
+                elements: [],
+            };
+            // backgroundLayout.elements.forEach(e => e.frozen = true);
+            this.layoutData = Object.assign({}, backgroundLayout);
+
+            editor.removeLayout(backgroundLayout);
+
+            this.isLayerShow = true;
         },
-        methods: {
-            setBackgroundLayout() {
-                const { editor } = this;
+        initEditor() {
+            this.editor = this.$refs.editor;
 
-                const totalLayoutHeight = editor.layouts.reduce((prevHeight, layout) => {
-                    const height = layout.title === '背景' ? 0 : layout.height;
-                    return prevHeight + height;
-                }, 0);
+            this.editor.$events.$on('editor.templet.ready', () => {
+                Console.log('editor.templet.ready');
 
-                const backgroundLayout = editor.layouts.find(l => l.title === '背景') || {
-                    title: '背景',
-                    top: 0,
-                    width: 790,
-                    height: totalLayoutHeight,
-                    backgroundColor: '#ffffffff',
-                    elements: [],
-                };
-                // backgroundLayout.elements.forEach(e => e.frozen = true);
-                this.layoutData = Object.assign({}, backgroundLayout);
+                this.editor.zoom = this.zoom;
+                this.setBackgroundLayout();
+                this.onEditorTempletLoaded();
+            });
+        },
+        parsePSD(ev) {
+            const { editor } = this;
+            const { files } = ev.srcElement;
+            const options = {
+                parseSVG: true,
+                groupMode: 'tag', // flat tag merge
+                defaultTextType: 'block',
+                imageQuality: 20,
+                imageMaxWidth: 5000,
+                imageMaxHeight: 5000,
+                onProgress: (data) => {
+                    console.log(data);
+                },
+            };
 
-                editor.removeLayout(backgroundLayout);
+            PsdToTemplet(files[0], options)
+                .then(layouts => {
+                    console.log({ layouts });
 
-                this.isLayerShow = true;
-            },
-            initEditor() {
-                this.editor = this.$refs.editor;
+                    this.setTemplet({
+                        layouts,
+                    });
+                })
+                .catch(err => console.error)
+        },
+        setTemplet(editorData) {
+            const { editor } = this;
 
-                this.editor.$events.$on('editor.templet.ready', () => {
-                    Console.log('editor.templet.ready');
+            editor.setTemplet(editorData);
+        },
+        onEditorTempletLoaded() {
+            this.innerStyle = {
+                height: `${this.editor.height * this.editor.zoom}px`,
+            };
 
-                    this.editor.zoom = this.zoom;
-                    this.setBackgroundLayout();
-                    this.onEditorTempletLoaded();
-                });
-            },
-            parsePSD(ev) {
-                const { editor } = this;
-                const { files } = ev.srcElement;
-                const options = {
-                    parseSVG: true,
-                    groupMode: 'tag', // flat tag merge
-                    defaultTextType: 'block',
-                    imageQuality: 20,
-                    imageMaxWidth: 5000,
-                    imageMaxHeight: 5000,
-                    onProgress: (data) => {
-                        console.log(data);
-                    },
-                };
-
-                PsdToTemplet(files[0], options)
-                    .then(layouts => {
-                        console.log({ layouts });
-
-                        this.setTemplet({
-                            layouts,
-                        });
-                    })
-                    .catch(err => console.error)
-            },
-            setTemplet(editorData) {
-                const { editor } = this;
-
-                editor.setTemplet(editorData);
-            },
-            onEditorTempletLoaded() {
+            this.$watch('editor.height', () => {
                 this.innerStyle = {
                     height: `${this.editor.height * this.editor.zoom}px`,
                 };
+            });
 
-                this.$watch('editor.height', () => {
-                    this.innerStyle = {
-                        height: `${this.editor.height * this.editor.zoom}px`,
-                    };
-                });
-
-                this.$watch('editor.zoom', () => {
-                    this.innerStyle = {
-                        height: `${this.editor.height * this.editor.zoom}px`,
-                    };
-                });
-            },
-            onEscKeyPress(evt) {
-                console.log(evt.keyCode);
-
-                // 按住 ESC 退出编辑背景
-                if (evt.keyCode === 27) {
-                    this.toggleBackgroundMode(false);
-                }
-            },
-            bindHotKey() {
-                document.addEventListener('keydown', this.onEscKeyPress, false);
-            },
-            unbindHotKey() {
-                document.removeEventListener('keydown', this.onEscKeyPress, false);
-            },
-            toggleBackgroundMode(mode) {
-                this.backgroundMode = mode;
-            },
+            this.$watch('editor.zoom', () => {
+                this.innerStyle = {
+                    height: `${this.editor.height * this.editor.zoom}px`,
+                };
+            });
         },
-        mounted() {
-            this.initEditor();
-            this.setTemplet(ONLINE_EDITOR_TEMPLATE || EDITOR_TEMPLATE);
+        onEscKeyPress(evt) {
+            console.log(evt.keyCode);
+
+            // 按住 ESC 退出编辑背景
+            if (evt.keyCode === 27) {
+                this.toggleBackgroundMode(false);
+            }
         },
-    };
+        bindHotKey() {
+            document.addEventListener('keydown', this.onEscKeyPress, false);
+        },
+        unbindHotKey() {
+            document.removeEventListener('keydown', this.onEscKeyPress, false);
+        },
+        toggleBackgroundMode(mode) {
+            this.backgroundMode = mode;
+        },
+    },
+    mounted() {
+        this.initEditor();
+        this.setTemplet(ONLINE_EDITOR_TEMPLATE || EDITOR_TEMPLATE);
+    },
+};
 </script>

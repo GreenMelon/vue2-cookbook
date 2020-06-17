@@ -29,86 +29,87 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import { createPosterEditor } from 'vue-poster-editor';
-    import PsdToTemplet from '@gaoding/psd-to-templet';
+// V6.1.0 测试 PSD 的 背景色解析
+import Vue from 'vue';
+import { createPosterEditor } from 'vue-poster-editor';
+import PsdToTemplet from '@gaoding/psd-to-templet';
 
-    export default {
-        components: {
-            Editor: createPosterEditor(Vue),
+export default {
+    components: {
+        Editor: createPosterEditor(Vue),
+    },
+    data() {
+        return {
+            zoom: 0.5,
+            editorOptions: {
+                fontList: [],
+                mode: 'flow',
+            },
+        }
+    },
+    computed: {
+        editor() {
+            return this.$refs.editor;
         },
-        data() {
-            return {
-                zoom: 0.5,
-                editorOptions: {
-                    fontList: [],
-                    mode: 'flow',
+    },
+    methods: {
+        isBackgroundElement(element) {
+            return element.category && element.category.indexOf('bg_') !== -1;
+        },
+        parsePSD(ev) {
+            const { editor, isBackgroundElement } = this;
+            const { files } = ev.srcElement;
+
+            const options = {
+                parseSVG: true,
+                groupMode: 'tag', // flat tag merge
+                defaultTextType: 'block',
+                imageQuality: 20,
+                imageMaxWidth: 5000,
+                imageMaxHeight: 5000,
+                onProgress: (data) => {
+                    console.log(data);
                 },
-            }
+            };
+
+            return PsdToTemplet(files[0], options)
+                .then(layouts => {
+                    console.log(layouts);
+
+                    return editor.setTemplet({
+                        layouts,
+                    });
+                })
+                .catch(err => console.error)
         },
-        computed: {
-            editor() {
-                return this.$refs.editor;
-            },
+        initEditor() {
+            this.editor.$events.$on('templet.created', () => {
+                this.editor.zoom = this.zoom;
+                window.editor = this.editor;
+            });
         },
-        methods: {
-            isBackgroundElement(element) {
-                return element.category && element.category.indexOf('bg_') !== -1;
-            },
-            parsePSD(ev) {
-                const { editor, isBackgroundElement } = this;
-                const { files } = ev.srcElement;
-
-                const options = {
-                    parseSVG: true,
-                    groupMode: 'tag', // flat tag merge
-                    defaultTextType: 'block',
-                    imageQuality: 20,
-                    imageMaxWidth: 5000,
-                    imageMaxHeight: 5000,
-                    onProgress: (data) => {
-                        console.log(data);
-                    },
-                };
-
-                return PsdToTemplet(files[0], options)
-                    .then(layouts => {
-                        console.log(layouts);
-
-                        return editor.setTemplet({
-                            layouts,
-                        });
-                    })
-                    .catch(err => console.error)
-            },
-            initEditor() {
-                this.editor.$events.$on('templet.created', () => {
-                    this.editor.zoom = this.zoom;
-                    window.editor = this.editor;
-                });
-            },
-            setBackgroundColor() {
-                this.editor.currentLayout.backgroundColor = '#007dd4ff';
-            },
-            setBackgroundImage() {
-                this.editor.currentLayout.backgroundImage = '//cjxq.oss.aliyuncs.com/cjxq/1/20190114/1_design_upload_1547451197_8eh4T8_20190014-153318729-9112-1.jpg';
-                this.editor.currentLayout.backgroundRepeat = 'repeat';
-            },
-            exportImage() {
-                const { editor } = this;
-
-                editor.layouts.forEach(layout => {
-                    layout.elements = layout.elements.filter(element => element.type !== 'text');
-                });
-
-                editor.exportImage(editor.layouts[0]).then(canvas => {
-                    window.baseUrl = canvas.toDataURL();
-                    console.log(window.baseUrl);
-                });
-            },
+        setBackgroundColor() {
+            this.editor.currentLayout.backgroundColor = '#007dd4ff';
         },
-        mounted() {
-            this.initEditor();
+        setBackgroundImage() {
+            this.editor.currentLayout.backgroundImage = '//cjxq.oss.aliyuncs.com/cjxq/1/20190114/1_design_upload_1547451197_8eh4T8_20190014-153318729-9112-1.jpg';
+            this.editor.currentLayout.backgroundRepeat = 'repeat';
         },
-    };
+        exportImage() {
+            const { editor } = this;
+
+            editor.layouts.forEach(layout => {
+                layout.elements = layout.elements.filter(element => element.type !== 'text');
+            });
+
+            editor.exportImage(editor.layouts[0]).then(canvas => {
+                window.baseUrl = canvas.toDataURL();
+                console.log(window.baseUrl);
+            });
+        },
+    },
+    mounted() {
+        this.initEditor();
+    },
+};
 </script>
