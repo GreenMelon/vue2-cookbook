@@ -1,49 +1,14 @@
-<template>
-    <main>
-        <categories :categories="categories"></categories>
-    </main>
-</template>
-
 <script>
-    export default {
-        data() {
-            return {
-                categories: [
-                    {
-                        name: 'clipboard',
-                        instances: [
-                            {
-                                name: '01',
-                                route: '/test/clipboard/01'
-                            }
-                        ],
-                    },{
-                        name: 'FileReader',
-                        instances: [
-                            {
-                                name: '01',
-                                route: '/test/filereader/image'
-                            }
-                        ],
-                    },{
-                        name: 'scrollTop',
-                        instances: [
-                            {
-                                name: '01',
-                                route: '/test/scroll-top/01'
-                            }
-                        ],
-                    },{
-                        name: 'other',
-                        instances: [
-                            {
-                                name: '01',
-                                route: '/test/other/01'
-                            }
-                        ],
-                    }
-                ],
-            }
-        },
-    }
+import Vue from 'vue';
+import Catalogue from '@/components/catalogue';
+
+export default Vue.extend({
+    mixins: [Catalogue],
+
+    data() {
+        return {
+            dir: 'test',
+        };
+    },
+});
 </script>

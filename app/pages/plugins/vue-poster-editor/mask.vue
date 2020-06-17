@@ -46,107 +46,108 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-    import VuePosterEditor from 'vue-poster-editor';
-    import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-05';
+// V5.6.25 蒙版图框与普通图框
+import Vue from 'vue';
+import VuePosterEditor from 'vue-poster-editor';
+import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-05';
 
-    Vue.use(VuePosterEditor);
+Vue.use(VuePosterEditor);
 
-    export default {
-        data() {
-            return {
-                zoom: 0.5,
-                editor: null,
-                editorOptions: {
-                    mode: 'flow',
-                    fontList: [],
-                    fontsMap: {},
-                    crossOriginal: false,
-                    hookImagePicker: true,
-                },
+export default {
+    data() {
+        return {
+            zoom: 0.5,
+            editor: null,
+            editorOptions: {
+                mode: 'flow',
+                fontList: [],
+                fontsMap: {},
+                crossOriginal: false,
+                hookImagePicker: true,
+            },
 
-                isNormalMask: false,
+            isNormalMask: false,
+        }
+    },
+    computed: {
+        currentElement() {
+            return this.editor && this.editor.currentElement;
+        },
+    },
+    watch: {
+        isNormalMask(value) {
+            const { currentElement } = this;
+            currentElement.customData = currentElement.customData || {};
+            const { customData } = currentElement;
+            if (value) {
+                customData.isNormalMask = true;
+                if (!customData.originMask) {
+                    customData.originMask = currentElement.mask;
+                }
+            } else {
+                customData.isNormalMask = false;
             }
         },
-        computed: {
-            currentElement() {
-                return this.editor && this.editor.currentElement;
-            },
+    },
+    methods: {
+        initEditor() {
+            this.editor = this.$refs.editor;
+
+            this.editor.$events.$on('editor.templet.ready', () => {
+                const { editor } = this;
+                editor.zoom = this.zoom;
+                editor.focusElement(editor.layouts[0].elements[0])
+            });
         },
-        watch: {
-            isNormalMask(value) {
-                const { currentElement } = this;
-                currentElement.customData = currentElement.customData || {};
-                const { customData } = currentElement;
-                if (value) {
-                    customData.isNormalMask = true;
-                    if (!customData.originMask) {
-                        customData.originMask = currentElement.mask;
-                    }
-                } else {
-                    customData.isNormalMask = false;
-                }
-            },
+        setTemplet(templet) {
+            this.editor.setTemplet(templet);
         },
-        methods: {
-            initEditor() {
-                this.editor = this.$refs.editor;
+        changeElement() {
+            const image = {
+                naturalHeight: 420,
+                naturalWidth: 418,
+                url: '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg',
+            };
 
-                this.editor.$events.$on('editor.templet.ready', () => {
-                    const { editor } = this;
-                    editor.zoom = this.zoom;
-                    editor.focusElement(editor.layouts[0].elements[0])
-                });
-            },
-            setTemplet(templet) {
-                this.editor.setTemplet(templet);
-            },
-            changeElement() {
-                const image = {
-                    naturalHeight: 420,
-                    naturalWidth: 418,
-                    url: '//st-gdx.dancf.com/0/dianshang/20190108-103721-47ba.jpeg',
-                };
+            const {
+                naturalHeight,
+                naturalWidth,
+                url,
+            } = image;
 
-                const {
-                    naturalHeight,
-                    naturalWidth,
-                    url,
-                } = image;
+            const {
+                editor,
+                currentElement,
+                currentElement: {
+                    customData = {},
+                },
+            } = this;
 
-                const {
-                    editor,
-                    currentElement,
-                    currentElement: {
-                        customData = {},
-                    },
-                } = this;
+            if (customData.isNormalMask) {
+                // this.editor.changeElement({
+                //     url,
+                //     mask: url,
+                // });
 
-                if (customData.isNormalMask) {
-                    // this.editor.changeElement({
-                    //     url,
-                    //     mask: url,
-                    // });
+                currentElement.imageHeight = naturalHeight * 1;
+                currentElement.imageWidth = naturalWidth * 1;
+                currentElement.url = url;
+                currentElement.mask = url;
+            } else {
+                // this.editor.changeElement({
+                //     url,
+                //     mask: customData.originMask,
+                // });
 
-                    currentElement.imageHeight = naturalHeight * 1;
-                    currentElement.imageWidth = naturalWidth * 1;
-                    currentElement.url = url;
-                    currentElement.mask = url;
-                } else {
-                    // this.editor.changeElement({
-                    //     url,
-                    //     mask: customData.originMask,
-                    // });
-
-                    currentElement.imageHeight = naturalHeight * 1;
-                    currentElement.imageWidth = naturalWidth * 1;
-                    currentElement.url = url;
-                }
-            },
+                currentElement.imageHeight = naturalHeight * 1;
+                currentElement.imageWidth = naturalWidth * 1;
+                currentElement.url = url;
+            }
         },
-        mounted() {
-            this.initEditor();
-            this.setTemplet(ONLINE_EDITOR_TEMPLATE);
-        },
-    };
+    },
+    mounted() {
+        this.initEditor();
+        this.setTemplet(ONLINE_EDITOR_TEMPLATE);
+    },
+};
 </script>

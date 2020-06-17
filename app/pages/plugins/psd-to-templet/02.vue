@@ -13,46 +13,47 @@
 </template>
 
 <script>
-    import PsdToTemplet from '@gaoding/psd-to-templet';
+// V5.6.25 测试 PSD 的 category
+import PsdToTemplet from '@gaoding/psd-to-templet';
 
-    export default {
-        data() {
-            return {}
+export default {
+    data() {
+        return {}
+    },
+    methods: {
+        parsePSD(ev) {
+            const { editor } = this;
+            const { files } = ev.srcElement;
+
+            const options = {
+                parseSVG: true,
+                groupMode: 'tag', // flat tag merge
+                defaultTextType: 'block',
+                imageQuality: 20,
+                imageMaxWidth: 5000,
+                imageMaxHeight: 5000,
+                onProgress: (data) => {
+                    console.log(data);
+                },
+            };
+
+            PsdToTemplet(files[0], options)
+                .then(layouts => {
+                    const regBgCate = /^bg/i;
+                    const elements = layouts.reduce((elems, layout) => {
+                        const bgElements = layout.elems.filter(element => {
+                            const { category } = element;
+                            return category && regBgCate.test(category);
+                        });
+
+                        return elems.concat(bgElements);
+                    }, []);
+
+                    console.log({ layouts, elements });
+                })
+                .catch(err => console.error)
         },
-        methods: {
-            parsePSD(ev) {
-                const { editor } = this;
-                const { files } = ev.srcElement;
-
-                const options = {
-                    parseSVG: true,
-                    groupMode: 'tag', // flat tag merge
-                    defaultTextType: 'block',
-                    imageQuality: 20,
-                    imageMaxWidth: 5000,
-                    imageMaxHeight: 5000,
-                    onProgress: (data) => {
-                        console.log(data);
-                    },
-                };
-
-                PsdToTemplet(files[0], options)
-                    .then(layouts => {
-                        const regBgCate = /^bg/i;
-                        const elements = layouts.reduce((elems, layout) => {
-                            const bgElements = layout.elems.filter(element => {
-                                const { category } = element;
-                                return category && regBgCate.test(category);
-                            });
-
-                            return elems.concat(bgElements);
-                        }, []);
-
-                        console.log({ layouts, elements });
-                    })
-                    .catch(err => console.error)
-            },
-        },
-        mounted() {},
-    };
+    },
+    mounted() {},
+};
 </script>

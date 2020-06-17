@@ -1,25 +1,14 @@
-<template>
-    <main>
-        <categories :categories="categories"></categories>
-    </main>
-</template>
-
 <script>
-    export default {
-        data() {
-            return {
-                categories: [
-                    {
-                        name: '点击事件',
-                        instances: [
-                            {
-                                name: 'dblclick',
-                                route: '/events/dblclick',
-                            }
-                        ],
-                    }
-                ],
-            }
-        },
-    }
+import Vue from 'vue';
+import Catalogue from '@/components/catalogue';
+
+export default Vue.extend({
+    mixins: [Catalogue],
+
+    data() {
+        return {
+            dir: 'events',
+        };
+    },
+});
 </script>
