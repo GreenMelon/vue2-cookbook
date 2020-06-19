@@ -25,7 +25,6 @@
 </template>
 
 <script>
-// V5.6.25 模块背景图
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import EDITOR_TEMPLATE from '@/data/editor-data-06';
@@ -33,6 +32,8 @@ import EDITOR_TEMPLATE from '@/data/editor-data-06';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 模块背景图',
+
     data() {
         return {
             zoom: 0.5,
@@ -46,11 +47,18 @@ export default {
             },
         }
     },
+
     computed: {
         currentElement() {
             return this.editor && this.editor.currentElement;
         },
     },
+
+    mounted() {
+        this.initEditor();
+        this.setTemplet(EDITOR_TEMPLATE);
+    },
+
     methods: {
         initEditor() {
             this.editor = this.$refs.editor;
@@ -80,10 +88,6 @@ export default {
             currentLayout.backgroundImage = currentElement.url;
             removeElement();
         },
-    },
-    mounted() {
-        this.initEditor();
-        this.setTemplet(EDITOR_TEMPLATE);
     },
 };
 </script>

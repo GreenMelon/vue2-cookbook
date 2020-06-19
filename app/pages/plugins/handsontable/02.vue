@@ -74,7 +74,11 @@ export default {
             table: {},
         }
     },
-    computed: {},
+
+    mounted() {
+        this.$nextTick(this.init);
+    },
+
     methods: {
         init() {
             const container = document.getElementById('v-table');
@@ -165,9 +169,6 @@ export default {
         getData() {
             console.log('getData', this.table.getData());
         },
-    },
-    mounted() {
-        this.$nextTick(this.init);
     },
 };
 </script>

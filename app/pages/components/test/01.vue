@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Title from './title';
+import Title from './ignore-title';
 
 export default {
     components: {

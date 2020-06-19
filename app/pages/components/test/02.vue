@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import InteractivityGuide from './interactivity-guide';
+import InteractivityGuide from './ignore-interactivity-guide';
 
 export default {
     components: {

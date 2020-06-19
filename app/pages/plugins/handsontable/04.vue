@@ -104,7 +104,11 @@ export default {
             },
         }
     },
-    computed: {},
+
+    mounted() {
+        this.$nextTick(this.init);
+    },
+
     methods: {
         init() {
             const container = document.getElementById('example');
@@ -150,9 +154,6 @@ export default {
 
             console.log('data', data);
         },
-    },
-    mounted() {
-        this.$nextTick(this.init);
     },
 };
 </script>

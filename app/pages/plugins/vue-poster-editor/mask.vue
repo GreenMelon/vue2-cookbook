@@ -46,7 +46,6 @@
 </template>
 
 <script>
-// V5.6.25 蒙版图框与普通图框
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-05';
@@ -54,6 +53,8 @@ import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-05';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 蒙版图框与普通图框',
+
     data() {
         return {
             zoom: 0.5,
@@ -69,11 +70,13 @@ export default {
             isNormalMask: false,
         }
     },
+
     computed: {
         currentElement() {
             return this.editor && this.editor.currentElement;
         },
     },
+
     watch: {
         isNormalMask(value) {
             const { currentElement } = this;
@@ -89,6 +92,12 @@ export default {
             }
         },
     },
+
+    mounted() {
+        this.initEditor();
+        this.setTemplet(ONLINE_EDITOR_TEMPLATE);
+    },
+
     methods: {
         initEditor() {
             this.editor = this.$refs.editor;
@@ -144,10 +153,6 @@ export default {
                 currentElement.url = url;
             }
         },
-    },
-    mounted() {
-        this.initEditor();
-        this.setTemplet(ONLINE_EDITOR_TEMPLATE);
     },
 };
 </script>

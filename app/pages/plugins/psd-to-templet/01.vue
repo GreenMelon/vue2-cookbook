@@ -25,7 +25,6 @@
 </template>
 
 <script>
-// V5.6.25 透明 SVG 元素
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import PsdToTemplet from '@gaoding/psd-to-templet';
@@ -34,6 +33,8 @@ import TEMPLATE from '@/data/editor-data-01';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 透明 SVG 元素',
+
     data() {
         return {
             editorOptions: {
@@ -41,11 +42,13 @@ export default {
             },
         }
     },
+
     computed: {
         editor() {
             return this.$refs.editor;
         },
     },
+
     methods: {
         parsePSD(ev) {
             const { editor } = this;
@@ -78,6 +81,5 @@ export default {
                 .catch(err => console.error)
         },
     },
-    mounted() {},
 };
 </script>

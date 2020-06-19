@@ -13,13 +13,11 @@
 </template>
 
 <script>
-// V5.6.25 测试 PSD 的 category
 import PsdToTemplet from '@gaoding/psd-to-templet';
 
 export default {
-    data() {
-        return {}
-    },
+    alias: 'V5.6.25 测试 PSD 的 category',
+
     methods: {
         parsePSD(ev) {
             const { editor } = this;
@@ -54,6 +52,5 @@ export default {
                 .catch(err => console.error)
         },
     },
-    mounted() {},
 };
 </script>

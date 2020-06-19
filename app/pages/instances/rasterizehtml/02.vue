@@ -49,84 +49,81 @@
 </template>
 
 <script>
-    import rasterizeHTML from 'rasterizehtml';
+import rasterizeHTML from 'rasterizehtml';
 
-    export default {
-        methods: {
-            draw() {
-                let canvas = document.getElementById('canvas');
-                let context = canvas.getContext('2d');
+export default {
+    methods: {
+        draw() {
+            let canvas = document.getElementById('canvas');
+            let context = canvas.getContext('2d');
 
-                let source = document.getElementById('source');
-                let height = source.offsetHeight;
-                let width = source.offsetWidth;
+            let source = document.getElementById('source');
+            let height = source.offsetHeight;
+            let width = source.offsetWidth;
 
-                let insertZone = document.getElementById('insert-zone');
-                let source_mirror = source.cloneNode(true);
-                insertZone.appendChild(source_mirror);
-                let _replaceElem = function replaceElem(elem) {
-                    for (let i = 0, j = elem.childNodes.length; i < j; i++) {
-                        let childElem = elem.childNodes[i];
+            let insertZone = document.getElementById('insert-zone');
+            let source_mirror = source.cloneNode(true);
+            insertZone.appendChild(source_mirror);
+            let _replaceElem = function replaceElem(elem) {
+                for (let i = 0, j = elem.childNodes.length; i < j; i++) {
+                    let childElem = elem.childNodes[i];
 
-                        if(childElem.childNodes.length) {
-                            replaceElem(childElem);
-                        }
-                        else {
-                            if (childElem.style && childElem.style.backgroundImage) {
-                                const reg_url = /https?[\s\S]+(jpe?g|png|gif)/gi;
-                                let backgroundImage = childElem.style.backgroundImage;
-                                let url = backgroundImage.match(reg_url);
-                                url = url ? url[0] : null;
+                    if(childElem.childNodes.length) {
+                        replaceElem(childElem);
+                    }
+                    else {
+                        if (childElem.style && childElem.style.backgroundImage) {
+                            const reg_url = /https?[\s\S]+(jpe?g|png|gif)/gi;
+                            let backgroundImage = childElem.style.backgroundImage;
+                            let url = backgroundImage.match(reg_url);
+                            url = url ? url[0] : null;
 
-                                if (url) {
-                                    let img = document.createElement('img');
+                            if (url) {
+                                let img = document.createElement('img');
 
-                                    img.height = childElem.offsetHeight;
-                                    img.width = childElem.offsetWidth;
-                                    img.src = url;
-                                    // debugger;
+                                img.height = childElem.offsetHeight;
+                                img.width = childElem.offsetWidth;
+                                img.src = url;
+                                // debugger;
 
-                                    childElem.parentNode.replaceChild(img, childElem);
-                                }
+                                childElem.parentNode.replaceChild(img, childElem);
                             }
                         }
                     }
-                };
+                }
+            };
 
-                _replaceElem(source_mirror);
-                let html = source_mirror.innerHTML;
-                return;
+            _replaceElem(source_mirror);
+            let html = source_mirror.innerHTML;
+            return;
 
-                let styleSheet = `<style lang="css">
-                    html, body {
-                        margin: 0;
-                        padding: 0;
-                    }
-                    #target {
-                        height: 120px;
-                        line-height: 120px;
-                        font-size: 60px;
-                        background-color: purple;
-                    }
-                    #bg {
-                        height: 60px;
-                    }
-                </style>`;
+            let styleSheet = `<style lang="css">
+                html, body {
+                    margin: 0;
+                    padding: 0;
+                }
+                #target {
+                    height: 120px;
+                    line-height: 120px;
+                    font-size: 60px;
+                    background-color: purple;
+                }
+                #bg {
+                    height: 60px;
+                }
+            </style>`;
 
-                canvas.height = height;
-                canvas.width = width;
+            canvas.height = height;
+            canvas.width = width;
 
-                rasterizeHTML.drawHTML(styleSheet + html, {
-                    width: width,
-                    height: height
-                })
-                .then(res => {
-                    context.drawImage(res.image, 0, 0, width, height, 0, 0, width, height);
-                });
-            }
-        },
-        mounted() {
-            //
+            rasterizeHTML.drawHTML(styleSheet + html, {
+                width: width,
+                height: height
+            })
+            .then(res => {
+                context.drawImage(res.image, 0, 0, width, height, 0, 0, width, height);
+            });
         }
-    }
+    },
+}
 </script>

@@ -28,24 +28,25 @@
 </template>
 
 <script>
-    import './child';
+import './ignore-child';
 
-    export default {
-        data() {
-            return {
-                a: 1,
-                b: '',
-                subfixA: 'px',
-            }
+export default {
+    data() {
+        return {
+            a: 1,
+            b: '',
+            subfixA: 'px',
+        }
+    },
+
+    mounted() {
+        console.log('child', this.$refs);
+    },
+
+    methods: {
+        doStuff(val) {
+            console.log('debounce', val);
         },
-        computed: {},
-        methods: {
-            doStuff(val) {
-                console.log('debounce', val);
-            },
-        },
-        mounted() {
-            console.log('child', this.$refs);
-        },
-    };
+    },
+};
 </script>

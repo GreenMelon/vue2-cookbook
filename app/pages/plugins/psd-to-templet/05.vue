@@ -29,15 +29,17 @@
 </template>
 
 <script>
-// V6.1.0 测试 PSD 的 背景色解析
 import Vue from 'vue';
 import { createPosterEditor } from 'vue-poster-editor';
 import PsdToTemplet from '@gaoding/psd-to-templet';
 
 export default {
+    alias: 'V6.1.0 测试 PSD 的 背景色解析',
+
     components: {
         Editor: createPosterEditor(Vue),
     },
+
     data() {
         return {
             zoom: 0.5,
@@ -47,11 +49,17 @@ export default {
             },
         }
     },
+
     computed: {
         editor() {
             return this.$refs.editor;
         },
     },
+
+    mounted() {
+        this.initEditor();
+    },
+
     methods: {
         isBackgroundElement(element) {
             return element.category && element.category.indexOf('bg_') !== -1;
@@ -107,9 +115,6 @@ export default {
                 console.log(window.baseUrl);
             });
         },
-    },
-    mounted() {
-        this.initEditor();
     },
 };
 </script>

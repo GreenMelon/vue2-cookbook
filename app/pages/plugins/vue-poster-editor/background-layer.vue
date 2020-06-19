@@ -72,7 +72,6 @@
 </template>
 
 <script>
-// V5.6.25 背景图层的实现设计
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import PsdToTemplet from '@gaoding/psd-to-templet';
@@ -82,6 +81,8 @@ import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-03';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 背景图层的实现设计',
+
     data() {
         return {
             zoom: 0.5,
@@ -101,7 +102,7 @@ export default {
             backgroundMode: false,
         }
     },
-    computed: {},
+
     watch: {
         backgroundMode(value) {
             const editorEontainer = document.getElementsByClassName('editor-container')[0];
@@ -116,6 +117,12 @@ export default {
             }
         },
     },
+
+    mounted() {
+        this.initEditor();
+        this.setTemplet(ONLINE_EDITOR_TEMPLATE || EDITOR_TEMPLATE);
+    },
+
     methods: {
         setBackgroundLayout() {
             const { editor } = this;
@@ -215,10 +222,6 @@ export default {
         toggleBackgroundMode(mode) {
             this.backgroundMode = mode;
         },
-    },
-    mounted() {
-        this.initEditor();
-        this.setTemplet(ONLINE_EDITOR_TEMPLATE || EDITOR_TEMPLATE);
     },
 };
 </script>

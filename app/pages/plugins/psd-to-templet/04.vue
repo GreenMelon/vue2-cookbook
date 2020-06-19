@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// V5.6.25 测试 PSD 的 背景色解析
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import PsdToTemplet from '@gaoding/psd-to-templet';
@@ -36,6 +35,8 @@ import PsdToTemplet from '@gaoding/psd-to-templet';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 测试 PSD 的 背景色解析',
+
     data() {
         return {
             zoom: 0.5,
@@ -45,11 +46,17 @@ export default {
             },
         }
     },
+
     computed: {
         editor() {
             return this.$refs.editor;
         },
     },
+
+    mounted() {
+        this.initEditor();
+    },
+
     methods: {
         isBackgroundElement(element) {
             return element.category && element.category.indexOf('bg_') !== -1;
@@ -92,9 +99,6 @@ export default {
         setBackgroundImage() {
             this.editor.currentLayout.backgroundImage = '//cjxq.oss.aliyuncs.com/cjxq/1/20190114/1_design_upload_1547451197_8eh4T8_20190014-153318729-9112-1.jpg';
         },
-    },
-    mounted() {
-        this.initEditor();
     },
 };
 </script>

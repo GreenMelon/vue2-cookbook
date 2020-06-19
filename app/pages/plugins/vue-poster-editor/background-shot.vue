@@ -53,7 +53,6 @@
 </template>
 
 <script>
-// V5.6.25 背景图层的截图分割
 import Vue from 'vue';
 import VuePosterEditor from 'vue-poster-editor';
 import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-04';
@@ -61,6 +60,8 @@ import ONLINE_EDITOR_TEMPLATE from '@/data/editor-data-04';
 Vue.use(VuePosterEditor);
 
 export default {
+    alias: 'V5.6.25 背景图层的截图分割',
+
     data() {
         return {
             zoom: 0.5,
@@ -79,8 +80,12 @@ export default {
             },
         }
     },
-    computed: {},
-    watch: {},
+
+    mounted() {
+        this.initEditor();
+        this.setTemplet(ONLINE_EDITOR_TEMPLATE);
+    },
+
     methods: {
         setBackgroundLayout() {
             const { editor } = this;
@@ -175,10 +180,6 @@ export default {
                 layouts: shotLayouts,
             });
         },
-    },
-    mounted() {
-        this.initEditor();
-        this.setTemplet(ONLINE_EDITOR_TEMPLATE);
     },
 };
 </script>

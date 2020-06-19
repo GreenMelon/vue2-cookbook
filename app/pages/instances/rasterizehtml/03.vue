@@ -31,31 +31,28 @@
 </template>
 
 <script>
-    import rasterizeHTML from 'rasterizehtml';
+import rasterizeHTML from 'rasterizehtml';
 
-    export default {
-        methods: {
-            draw() {
-                let canvas = document.getElementById('canvas');
-                let context = canvas.getContext('2d');
+export default {
+    methods: {
+        draw() {
+            let canvas = document.getElementById('canvas');
+            let context = canvas.getContext('2d');
 
-                let rootElem =  document.documentElement;
-                let height = rootElem.offsetHeight;
-                let width = rootElem.offsetWidth;
+            let rootElem =  document.documentElement;
+            let height = rootElem.offsetHeight;
+            let width = rootElem.offsetWidth;
 
-                let URL = 'https://baidu.com';
+            let URL = 'https://baidu.com';
 
-                rasterizeHTML.drawURL(URL, {
-                    height: height,
-                    width: width
-                })
-                .then(res => {
-                    context.drawImage(res.image, 0, 0);
-                });
-            }
-        },
-        mounted() {
-            //
+            rasterizeHTML.drawURL(URL, {
+                height: height,
+                width: width
+            })
+            .then(res => {
+                context.drawImage(res.image, 0, 0);
+            });
         }
-    }
+    },
+}
 </script>

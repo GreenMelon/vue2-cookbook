@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// 二维码 (失效)
 import $ from 'jquery';
 
 const loadScript = function(url) {
@@ -31,6 +30,8 @@ const loadScript = function(url) {
 };
 
 export default {
+    alias: '二维码 (失效)',
+
     data() {
         return {
             QRCODE_JS_URL: 'http://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js',
@@ -40,6 +41,11 @@ export default {
             url: 'https://github.com/greenmelon/vue2-cookbook',
         }
     },
+
+    mounted() {
+        this.init();
+    },
+
     methods: {
         loadQrCode() {
             return loadScript(this.QRCODE_JS_URL)
@@ -63,9 +69,6 @@ export default {
                     });
                 });
         },
-    },
-    mounted() {
-        this.init();
     },
 };
 </script>
