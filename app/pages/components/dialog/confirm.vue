@@ -8,19 +8,19 @@
 </template>
 
 <script>
-    export default {
-        methods: {
-            handleClick() {
-                this.$confirm('caigua', {
-                    confirmText: '删除x',
+export default {
+    methods: {
+        handleClick() {
+            this.$confirm('caigua', {
+                confirmText: '删除x',
+            })
+                .then(res => {
+                    console.log('yes');
                 })
-                    .then(res => {
-                        console.log('yes');
-                    })
-                    .catch(err => {
-                        console.log('no');
-                    });
-            },
+                .catch(err => {
+                    console.log('no');
+                });
         },
-    };
+    },
+};
 </script>

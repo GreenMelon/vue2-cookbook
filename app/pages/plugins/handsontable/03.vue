@@ -22,7 +22,11 @@ export default {
             selection: [],
         }
     },
-    computed: {},
+
+    mounted() {
+        this.$nextTick(this.init);
+    },
+
     methods: {
         init() {
             const self = this;
@@ -168,9 +172,6 @@ export default {
 
             return { isValid, start, d };
         },
-    },
-    mounted() {
-        this.$nextTick(this.init);
     },
 };
 </script>

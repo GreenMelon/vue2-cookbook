@@ -5,7 +5,7 @@
 
 import Vue from 'vue';
 
-import app from '../../app/pages/test/parent.vue';
+import app from '../../app/pages/test/ignore-parent.vue';
 
 describe('test parent.vue', () => {
 

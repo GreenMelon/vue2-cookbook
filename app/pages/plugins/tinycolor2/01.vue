@@ -12,24 +12,22 @@
 </template>
 
 <script>
-    import Tinycolor2 from 'tinycolor2';
+import Tinycolor2 from 'tinycolor2';
 
-    export default {
-        data() {
-            return {
-                color: '',
-            }
+export default {
+    data() {
+        return {
+            color: '',
+        }
+    },
+
+    methods: {
+        validateTransparency() {
+            const { color } = this;
+            const alpha = Tinycolor2(color).getAlpha();
+
+            console.log(`%c alpha: ${alpha}`, 'color: green;');
         },
-
-        mounted() {},
-
-        methods: {
-            validateTransparency() {
-                const { color } = this;
-                const alpha = Tinycolor2(color).getAlpha();
-
-                console.log(`%c alpha: ${alpha}`, 'color: green;');
-            },
-        },
-    };
+    },
+};
 </script>

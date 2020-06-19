@@ -14,8 +14,5 @@
 </template>
 
 <script>
-    export default {
-        methods: {},
-        mounted() {}
-    }
+export default {}
 </script>

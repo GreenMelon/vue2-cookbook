@@ -8,12 +8,6 @@
 import XLSX from 'xlsx';
 
 export default {
-    data() {
-        return {}
-    },
-
-    mounted() {},
-
     methods: {
         stringToArrayBuffer(str) {
             const buffer = new ArrayBuffer(str.length);

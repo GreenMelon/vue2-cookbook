@@ -8,15 +8,15 @@
 </template>
 
 <script>
-// 二维码
 import QrCode from 'qrcode'
 
 export default {
-    data() {
-        return {
-            //
-        }
+    alias: '二维码',
+
+    mounted() {
+        this.init();
     },
+
     methods: {
         getQrCode() {
             const canvas = document.getElementById('canvas');
@@ -32,9 +32,6 @@ export default {
         init() {
             this.getQrCode();
         },
-    },
-    mounted() {
-        this.init();
     },
 };
 </script>

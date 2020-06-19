@@ -11,12 +11,6 @@
 import XLSX from 'xlsx';
 
 export default {
-    data() {
-        return {}
-    },
-
-    mounted() {},
-
     methods: {
         readFile(evt) {
             const { fixedData } = this;

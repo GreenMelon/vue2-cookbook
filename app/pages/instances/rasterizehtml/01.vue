@@ -32,44 +32,41 @@
 </template>
 
 <script>
-    import rasterizeHTML from 'rasterizehtml';
+import rasterizeHTML from 'rasterizehtml';
 
-    export default {
-        methods: {
-            draw() {
-                let canvas = document.getElementById('canvas');
-                let context = canvas.getContext('2d');
+export default {
+    methods: {
+        draw() {
+            let canvas = document.getElementById('canvas');
+            let context = canvas.getContext('2d');
 
-                let source = document.getElementById('source');
-                let offsetX = source.offsetLeft;
-                let offsetY = source.offsetTop;
-                let height = source.offsetHeight;
-                let width = source.offsetWidth;
+            let source = document.getElementById('source');
+            let offsetX = source.offsetLeft;
+            let offsetY = source.offsetTop;
+            let height = source.offsetHeight;
+            let width = source.offsetWidth;
 
-                canvas.height = height;
-                canvas.width = width;
+            canvas.height = height;
+            canvas.width = width;
 
-                const docElem = document.documentElement;
-                let docHeight = docElem.scrollHeight;
-                let docWidth = docElem.scrollWidth;
-                let html = this.excludeScripts(docElem.innerHTML);
+            const docElem = document.documentElement;
+            let docHeight = docElem.scrollHeight;
+            let docWidth = docElem.scrollWidth;
+            let html = this.excludeScripts(docElem.innerHTML);
 
-                rasterizeHTML.drawHTML(html, {
-                    width: docWidth,
-                    height: docHeight
-                })
-                .then(res => {
-                    const image = res.image;
-                    context.drawImage(image, offsetX, offsetY, width, height, 0, 0, width, height);
-                });
-            },
-            excludeScripts(str) {
-                const reg_script = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-                return str.replace(reg_script, '');
-            }
+            rasterizeHTML.drawHTML(html, {
+                width: docWidth,
+                height: docHeight
+            })
+            .then(res => {
+                const image = res.image;
+                context.drawImage(image, offsetX, offsetY, width, height, 0, 0, width, height);
+            });
         },
-        mounted() {
-            //
+        excludeScripts(str) {
+            const reg_script = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+            return str.replace(reg_script, '');
         }
-    }
+    },
+}
 </script>
