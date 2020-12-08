@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import ImageShadow from 'vue-image-shadow';
+
 import App from './app.vue';
 import Store from './store';
 // import routes from './config/routes'; // 手动注入路由
@@ -11,6 +13,8 @@ import './utils/log';
 
 Vue.use(VueRouter);
 Vue.config.debug = true;
+
+Vue.component('image-shadow', ImageShadow);
 
 const router = new VueRouter({
     routes,
