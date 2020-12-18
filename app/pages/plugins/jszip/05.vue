@@ -5,6 +5,13 @@
             accept=".zip"
             @change="readFile"
         >
+        <img
+            v-for="(src, index) in srcs"
+            :key="index"
+            :src="src"
+            class="image"
+            alt=""
+        >
     </main>
 </template>
 
@@ -32,6 +39,7 @@ export default {
     data() {
         return {
             jszip: null,
+            srcs: [],
         }
     },
 
@@ -65,16 +73,28 @@ export default {
                             videoWidth: width,
                             duration,
                         } = video;
+
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+                        canvas.height = height;
+                        canvas.width = width;
+                        context.drawImage(video, 0, 0, width, height);
+
+                        const cover = canvas.toDataURL('image/png');
+                        this.srcs.push(cover);
                         Object.assign(entry, {
                             size: entry._data.uncompressedSize,
                             duration,
                             height,
                             width,
                             blob,
+                            cover,
                         });
                         URL.revokeObjectURL(url);
                         resolve(entry);
                     }
+                    video.muted = true;
+                    video.autoplay = true;
                     video.src = url;
                 });
             });
@@ -98,3 +118,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.image {
+    width: 300px;
+}
+</style>
