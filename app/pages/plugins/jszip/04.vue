@@ -16,7 +16,6 @@ export default {
     data() {
         return {
             jszip: null,
-            src: '',
         }
     },
 
@@ -38,7 +37,6 @@ export default {
             this.init();
 
             const [file] = evt.target.files;
-            let allBytes = [];
             const options = {
                 // base64: true,
                 decodeFileName: (bytes) => {
