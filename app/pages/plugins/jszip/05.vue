@@ -103,6 +103,8 @@ export default {
         readFile(evt) {
             this.init();
 
+            this.srcs = [];
+
             const [file] = evt.target.files;
 
             this.jszip.loadAsync(file)
@@ -112,7 +114,10 @@ export default {
                     const validEntries = entries.filter(entry => this.validateName(entry.name) && !entry.dir);
                     console.log({ validEntries });
 
-                    Promise.all(validEntries.map(this.getFileInfo)).then(console.log);
+                    Promise.all(validEntries.map(this.getFileInfo)).then((data) => {
+                        window.data = data;
+                        console.log('window.data: ', window.data);
+                    });
                 });
         },
     },
