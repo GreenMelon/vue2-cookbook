@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import ImageShadow from 'vue-image-shadow';
+// import ImageShadow from 'vue-image-shadow';
+import Icon from '@caigua/icon';
 
 import App from './app.vue';
 import Store from './store';
@@ -14,7 +15,11 @@ import './utils/log';
 Vue.use(VueRouter);
 Vue.config.debug = true;
 
-Vue.component('image-shadow', ImageShadow);
+// Vue.component('image-shadow', ImageShadow);
+
+Icon.registScript('//at.alicdn.com/t/font_2264946_ecz3z0rdwh.js');
+Icon.registAnimation('icon-animation--');
+Vue.use(Icon);
 
 const router = new VueRouter({
     routes,
