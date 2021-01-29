@@ -78,7 +78,7 @@ module.exports = {
                  * url-loader
                  * 它会将小于8kb的图片、iconfont字体都转为base64, 超过8kb的才会生成具体文件
                  */
-                test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+                test: /\.(gif|jp(e)?g|png|woff|svg|eot|ttf)\??.*$/,
                 loader: 'url-loader',
                 options: {
                     limit: 8192
