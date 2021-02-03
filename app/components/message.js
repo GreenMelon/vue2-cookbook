@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import Dialog from './dialog';
 
 export const defaultMessage = {
     isShow: false,
@@ -50,7 +49,11 @@ export const Message = new Vue({
     },
 
     render(createdElement) {
-        return createdElement(Dialog, {
+        return createdElement('div', {
+            attrs: {
+                class: 'dialog',
+            },
+
             directives: [{
                 name: 'show',
                 value: this.dialog.isShow,
@@ -69,7 +72,7 @@ export const Message = new Vue({
                     class: 'dialog-icon-content',
                 },
             }, [
-                createdElement('icon', {
+                createdElement('i', {
                     props: {
                         name: this.dialog.icon,
                     },
