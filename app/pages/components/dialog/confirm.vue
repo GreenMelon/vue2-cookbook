@@ -12,7 +12,7 @@ export default {
     methods: {
         handleClick() {
             this.$confirm('caigua', {
-                confirmText: '删除x',
+                confirmText: '删除',
             })
                 .then(res => {
                     console.log('yes');
