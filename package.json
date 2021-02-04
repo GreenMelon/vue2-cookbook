@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/GreenMelon/vue2-cookbook#readme",
   "dependencies": {
+    "@caigua/dialog": "^0.1.1",
     "@caigua/icon": "^0.1.0",
     "@editorjs/checklist": "^1.3.0",
     "@editorjs/editorjs": "^2.19.1",

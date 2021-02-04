@@ -8,7 +8,6 @@
 <script>
 import './components/categories';
 import './components/modules';
-import './components/toast';
 
 export default {
     data() {

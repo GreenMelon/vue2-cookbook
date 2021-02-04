@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 // import ImageShadow from 'vue-image-shadow';
 import Icon from '@caigua/icon';
+import Dialog from '@caigua/dialog';
 
 import App from './app.vue';
 import Store from './store';
@@ -20,6 +21,7 @@ Vue.config.debug = true;
 Icon.registScript('//at.alicdn.com/t/font_2264946_ecz3z0rdwh.js');
 Icon.registAnimation('icon-animation--');
 Vue.use(Icon);
+Vue.use(Dialog);
 
 const router = new VueRouter({
     routes,
