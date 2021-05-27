@@ -1,11 +1,17 @@
 <template>
     <main>
         <h1>Index</h1>
-
-        <img :src="preview1" alt="">
-        <img :src="preview2" alt="">
-        <img src="~images/blue-sky.jpg" alt="">
-
+        <div>
+            <div>
+                <img :src="preview1" alt="">
+            </div>
+            <div>
+                <img :src="preview2" alt="">
+            </div>
+            <div>
+                <img src="~images/blue-sky.jpg" alt="">
+            </div>
+        </div>
     </main>
 </template>
 
@@ -26,8 +32,14 @@ export default {
 </script>
 
 <style scoped>
+div {
+    display: flex;
+}
+div + div {
+    margin-left: 20px;
+}
 img {
-    width: 400px;
+    width: 100%;
     height: auto;
 }
 </style>
